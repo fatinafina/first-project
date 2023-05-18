@@ -6,5 +6,27 @@
     <p th:text="${result}"/>
 </div>
 
+<link rel="stylesheet" href="main.css">
+    </head>
+  
+<body>
+    <form>
+        <h1>LOGIN</h1>
+
+        <br><input type="radio" name="lgstaff" value="staff" id="staff">
+        <label for ="lgstaff">Staff</label>
+        <input type="radio" name="lgmember">
+        <label for="lgmember" name="member">Member</label>
+        <br><label for="uname">Username:</label><br>
+        <input type="text" id="uname" name="uname"><br>
+        <label for="password">Password:</label><br>
+        <input type="password" id="password" name="password"><br>
+
+        <br><input type="submit" value="Login" name="login"></br>
+        <br><a href="#">New Member? Register</a></br>
+      </form>
+
+
+
 </body>
 </html>
