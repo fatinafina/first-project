@@ -14,6 +14,18 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
+  background-color: #f8f8f8;
+}
+
+li a{
+  float: left;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
   background-color: #ccb585;
 }
 
