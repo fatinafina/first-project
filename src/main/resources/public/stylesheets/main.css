@@ -1,42 +1,25 @@
-body {
-    background-image: url("khairat.png"); /* Replace "image.jpg" with the path to your image */
-    background-repeat: no-repeat;
-    background-size: cover; /* Adjust to "contain" if needed */
-  }
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #ccb585;
+header {
+    background-color: #d3b197;
+    padding: 20px;
+    text-align: center;
 }
 
-li {
-  float: left;
-}
-
-li a {
-  display: block;
-  color: rgb(88, 64, 64);
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
 }
 
 nav ul li {
     display: inline;
-    margin-right: 80px;
+    margin-right: 90px;
 }
+
 
 nav ul li a {
     text-decoration: none;
     color: #333;
-    padding: 50px;
+    padding: 5px;
 }
 
 nav ul li a:hover {
@@ -48,44 +31,36 @@ nav ul li a:hover {
   .column {
 	  flex: 30%;
 	  height: 300px;
-	  padding: 90px;
-	  margin-left: 50px;
+	  padding: 50px;
+	  margin: 1px;
 	  background-color: #cccccc;
 	  text-align: center;
-      opacity:0.6;
-      float:right;
 	}
-
 	.container {
-	display: flex;
-    margin : 100 px;
-    height:50px;
-}
+	   display: flex;}
 
-  .container.box {
+  .container {
     display: flex;
     justify-content: left;
     align-items: left;
-    height:50vh;
+    height:10vh;
   }
 
   .box {
-    align-items:center;
-    padding: 50px;
+    padding: 20px;
     background-color: #bfb3a9;
-    bottom:90px;
-    margin-top: 100px; 
-
+    border: 1px solid #807868;
+    border-radius: 1px;
   }
   
   .box p {
     margin: 0;
     font-size: 20px;
     text-align: center;
-
   }
   
   .box a {
     color: rgb(145, 111, 78);
     text-decoration: underline;
   }
+
