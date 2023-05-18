@@ -3,6 +3,12 @@ header {
     padding: 20px;
 }
 
+body {
+    background-image: url("khairat.png"); /* Replace "image.jpg" with the path to your image */
+    background-repeat: no-repeat;
+    background-size: cover; /* Adjust to "contain" if needed */
+  }
+
 nav ul {
     list-style-type: none;
     margin: 0;
