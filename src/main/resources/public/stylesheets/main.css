@@ -1,9 +1,8 @@
-header {
-    background-color: #d3b197;
-    padding: 20px;
-    
-}
-
+body {
+    background-image: url("khairat.png"); /* Replace "image.jpg" with the path to your image */
+    background-repeat: no-repeat;
+    background-size: cover; /* Adjust to "contain" if needed */
+  }
 ul {
   list-style-type: none;
   margin: 0;
@@ -23,7 +22,7 @@ li {
 
 li a {
   display: block;
-  color: rgb(97, 46, 46);
+  color: rgb(88, 64, 64);
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
@@ -31,13 +30,13 @@ li a {
 
 nav ul li {
     display: inline;
-    margin-right: 90px;
+    margin-right: 80px;
 }
 
 nav ul li a {
     text-decoration: none;
     color: #333;
-    padding: 5px;
+    padding: 50px;
 }
 
 nav ul li a:hover {
@@ -49,33 +48,41 @@ nav ul li a:hover {
   .column {
 	  flex: 30%;
 	  height: 300px;
-	  padding: 50px;
-	  margin: 1px;
+	  padding: 90px;
+	  margin-left: 50px;
 	  background-color: #cccccc;
 	  text-align: center;
+      opacity:0.6;
+      float:right;
 	}
+
 	.container {
-	   display: flex;
-    margin : 100 px;}
+	display: flex;
+    margin : 100 px;
+    height:50px;
+}
 
   .container.box {
     display: flex;
     justify-content: left;
     align-items: left;
-    height:100vh;
+    height:50vh;
   }
 
   .box {
-    padding: 60px;
+    align-items:center;
+    padding: 50px;
     background-color: #bfb3a9;
-    border: 1px solid #807868;
-    border-radius: 1px;
+    bottom:90px;
+    margin-top: 100px; 
+
   }
   
   .box p {
     margin: 0;
     font-size: 20px;
     text-align: center;
+
   }
   
   .box a {
