@@ -1,17 +1,13 @@
 .header {
   overflow: hidden;
   background-color: #938986;
+  opacity: 0.8;
  
 }
 .logo {
   float: left;
-  color: black;
-  text-align: center;
+ margin: 20px;
   padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  line-height: 25px;
-  border-radius: 4px;
 }
 .header-center {
   float: center;
@@ -46,6 +42,11 @@ h3{
 }
 .profile{
   float: left;
+  margin: 10px;
+ margin-left: 10px;
+}
+.bismillah{
+  margin-right: 100px;
 }
 .topnav a {
   float: left;
@@ -76,22 +77,21 @@ h3{
 
 
  .container .column {
-	  height: 290px;
+	  height: 280px;
 	  padding: 50px;
     float: right;
 	  background-color: #5a5656;
 	  text-align: center;
     opacity: 0.8;
 	}
-
- 
   .box {
     padding: 70px;
     margin: 30px;
-    width:300px;
+    width:250px;
     float: left;
     background-color:#938986 ;
     opacity: 0.8;
+  
   }
   
  
@@ -108,4 +108,72 @@ float: center;
 }
 .button1{
 border-radius: 14px;
+margin-top: 10px;
+margin-left: 70px;
+}
+
+input[type=submit] {
+  width: 30%;
+  background-color: #FFFFFF;  
+  color: brown;
+  display: inline-block;
+  padding: 14px 10px;  
+  margin: 10px 270px;
+  border: 7px;  
+  border-radius: 50px;
+  cursor: pointer;
+  
+}
+
+input[type=submit]:hover {
+  background-color: #af7c74;}
+
+  .split {
+  height: 50%;
+  width: 45.57%;
+  border-style: solid;
+  position: fixed;
+  z-index: 1;
+  top: 70px;
+  margin: 50px;
+  overflow-x: hidden;
+  padding-top: 50px;
+  opacity: 0.6;
+  background-color: rgb(97, 94, 94);
+}
+
+/* Control the left side */
+.left {
+  left: 0;
+  background-color: black;
+  width: 30%;
+
+  
+}
+
+/* Control the right side */
+.right {
+  right: 0;
+  background-color: black;
+  width: 61.5%;
+  
+}
+
+/* If you want the content centered horizontally and vertically */
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+/* Style the image inside the centered container, if needed */
+.centered img {
+  width: 150px;
+  border-radius: 50%;
+}
+
+.div{
+    border: 20 px;
 }
