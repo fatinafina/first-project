@@ -1,7 +1,22 @@
-header {
-    background-color: #d3b197;
-    padding: 20px;
-    text-align: center;
+.header {
+  overflow: hidden;
+  background-color: #938986;
+ 
+}
+.logo {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+.header-center {
+  float: center;
+  text-align: center;
+}
 body {
     background-image: url("khairat.png"); /* Replace "image.jpg" with the path to your image */
     background-repeat: no-repeat;
@@ -17,78 +32,80 @@ ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #f8f8f8;
+  color: white;
+}
+h3{
+  color: black;
+  text-decoration: underline;
 }
 
-li a{
+.topnav {
+  overflow: hidden;
+  background-color:  #bfb3a9;
+  
+}
+.profile{
   float: left;
 }
-
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  background-color: #ccb585;
+.topnav a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 15px;
 }
 
-nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
+.topnav a:hover {
+  background-color:  #938986;
+  color: black;
 }
 
-nav ul li {
-    display: inline;
-    margin-right: 90px;
+.topnav a.active {
+  background-color:#bfb3a9 ;
+  color:black;
 }
 
-
-nav ul li a {
-    text-decoration: none;
-    color: #333;
-    padding: 5px;
-}
-
-nav ul li a:hover {
-    color: #666;
-    background-color: #e6e6e6;
+.topnav-right {
+  float: right;
+  display: block;
+    padding: 8px;
+  
+  
 }
 
 
-  .column {
-	  flex: 30%;
-	  height: 300px;
+ .container .column {
+	  height: 290px;
 	  padding: 50px;
-	  margin: 1px;
-	  background-color: #cccccc;
+    float: right;
+	  background-color: #5a5656;
 	  text-align: center;
+    opacity: 0.8;
 	}
-	.container {
-	   display: flex;}
 
-  .container {
-    display: flex;
-    justify-content: left;
-    align-items: left;
-    height:10vh;
-  }
-
+ 
   .box {
-    padding: 20px;
-    background-color: #bfb3a9;
-    border: 1px solid #807868;
-    border-radius: 1px;
+    padding: 70px;
+    margin: 30px;
+    width:300px;
+    float: left;
+    background-color:#938986 ;
+    opacity: 0.8;
   }
   
-  .box p {
-    margin: 0;
-    font-size: 20px;
-    text-align: center;
-  }
+ 
   
   .box a {
     color: rgb(145, 111, 78);
     
   }
-
+.container .button1 {
+border-radius: 10px;
+background-color: #938986;
+color: white;
+float: center;
+}
+.button1{
+border-radius: 14px;
+}
