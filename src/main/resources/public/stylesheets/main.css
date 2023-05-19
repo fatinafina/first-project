@@ -2,6 +2,34 @@ header {
     background-color: #d3b197;
     padding: 20px;
     text-align: center;
+body {
+    background-image: url("khairat.png"); /* Replace "image.jpg" with the path to your image */
+    background-repeat: no-repeat;
+    background-size: cover; /* Adjust to "contain" if needed */
+  }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #f8f8f8;
+}
+
+li a{
+  float: left;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ccb585;
 }
 
 nav ul {
@@ -61,6 +89,6 @@ nav ul li a:hover {
   
   .box a {
     color: rgb(145, 111, 78);
-    text-decoration: underline;
+    
   }
 
