@@ -19,7 +19,7 @@
  margin-right:9% ;
 }
 body {
-    background-image: url("/public/khairat.png"); /* Replace "image.jpg" with the path to your image */
+    background-image: url("/khairat.png"); /* Replace "image.jpg" with the path to your image */
     background-repeat: no-repeat;
     background-size: cover; /* Adjust to "contain" if needed */
   
@@ -115,6 +115,9 @@ float: center;
 border-radius: 14px;
 margin-top: 10px;
 margin-left: 90px;
+}
+.btn1-c{
+  margin-left: 10px !important;
 }
 
 .form-wrapper{
