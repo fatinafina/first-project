@@ -1,55 +1,61 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'hello')}">
+<html>
+<head>
+  <title>Log in </title>
+  <link href="../public/stylesheets/main.css" rel="stylesheet" type="text/css">
+</head>
 <body>
+  <div class="header-center">
+    <img src="../public/stylesheets/bismillah.png" class="bismillah" width="250" height="120">
+    
+  </div>
+<div class="form-wrapper">
+  <div class="form-container">
+    <div class="form-left">
+<img src="../public/stylesheets/mosque.png" width="150" height="150">
+    </div>
 
-<div class="container">
-    <p th:text="${result}">
+    
+<div class="login-form">
+  <form action="#">
+<div class="user-input">
+ 
+  <img src="../public/stylesheets/profile.png" width="25" height="25">
+  <input type="text" placeholder="Member ID"><br><br>
+  <img src="../public/stylesheets/lock.png" width="25" height="25">
+  <input type="password" placeholder="Password" ><br><br>
+
+
+
+<div class="btn-signin">
+  <button class="btn submin-btn">Sign In</button>
+
+</div>
+  </form>
+<a href="#" class="fp-link">Forget Password ?</a>
+<div class="signup">
+<p>Don't have an account ?<a href="#">Sign Up</a></p>
+</div>
+</div>
+</div>
+  </div>
+
 </div>
 
-<link rel="stylesheet" href="main.css">
-    </head>
-  
-<body>
-   
-                <h1>LOGIN</h1>
-                <div class="row">
-                  <div class="column1">
-                    <img src="../public/stylesheets/mosque.png" class="logo1" width="130" height="130">
-                  </div>
-                  <div class="column1" style="background-color:#bbb;">
-                    <h2>Column 2</h2>
-                    <p>Some text..</p>
-                  </div>
-                </div>
-               
-            <style>
-              .column1 {
-  float: left;
-  width: 40%;
-  margin-top: 100px;
-  height: 250px; /* Should be removed. Only for demonstration */
-}
-
-/* Clear floats after the columns */
-.row:after {
-  float: right;
-  clear: both;
-}
-@media screen and (max-width: 600px) {
-  .column1 {
-    width: 100%;
-  }
-}
-.logo1{
-margin: 60px;
-margin-left: 200px;
-}
-            </style>
-        
-
-
-
-
-
 </body>
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  body{
+    background:#F7E7CE ;
+    background-repeat: no-repeat;
+    padding-top: 40px;
+    width: 100vw;
+    height: 100vh;
+  }
+  
+</style>
 </html>
