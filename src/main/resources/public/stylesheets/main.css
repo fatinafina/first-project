@@ -206,6 +206,9 @@ font-size: 12px;
 .btn:hover{
   opacity: 0.9;
 }
+.btn-signin a{
+  color: black;
+}
 .fp-link{
   font-size: 14px;
   font-weight: 500;
