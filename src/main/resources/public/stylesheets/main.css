@@ -1,7 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+*{
+  font-family: 'Roboto Slab', serif;
+}
 .header {
   overflow: hidden;
-  background-color: #938986;
-  opacity: 0.8;
+  background-color: #5a5656;
+ 
  
 }
 .logo {
@@ -13,23 +17,24 @@
   float: center;
   text-align: center;
 }
+.header-center p{
+ margin-right:9% ;
+}
 body {
     background-image: url("khairat.png"); /* Replace "image.jpg" with the path to your image */
     background-repeat: no-repeat;
     background-size: cover; /* Adjust to "contain" if needed */
+  
   }
 ul {
-  list-style-type: none;
+text-align: left;
   margin: 0;
   padding: 0;
+  color: black;
+  font-family: 'Roboto Slab', serif,;
+  font-size: 14px;
 }
-ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  overflow: hidden;
-  color: white;
-}
+
 h3{
   color: black;
   text-decoration: underline;
@@ -80,17 +85,19 @@ h3{
 	  height: 280px;
 	  padding: 40px;
     float: right;
-	  background-color: #5a5656;
+	  background-color: #938986 ;
 	  text-align: center;
-    opacity: 0.8;
+    opacity: 0.9;
 	}
   .box {
-    padding: 70px;
+    padding: 50px;
     margin: 30px;
-    width:250px;
+    width:280px;
     float: left;
     background-color:#938986 ;
     opacity: 0.9;
+    font-size: 14px;
+  
   
   }
   
@@ -103,19 +110,19 @@ h3{
 .container .button1 {
 border-radius: 10px;
 background-color: #938986;
-color: white;
+color: black;
 float: center;
 }
 .button1{
 border-radius: 14px;
 margin-top: 10px;
-margin-left: 70px;
+margin-left: 90px;
 }
 
 .form-wrapper{
   max-width: 670px;
   margin: 0 auto;
-  background-color:#C19A6B ;
+  background-color:#5a5656 ;
   opacity: 0.9;
   border-radius: 40px;
 
@@ -136,6 +143,10 @@ margin-left: 70px;
   background-size: cover;
   background-repeat: no-repeat;
   position: relative;
+}
+.form-left h2{
+  margin-bottom: 30px;
+  font-size: 20px
 }
 .form-left::before{
 content: "";
@@ -179,7 +190,7 @@ font-size: 12px;
 }
 
 .btn{
-  width: 50%;
+  width: 80%;
   display: inline-block;
   color:black;
   cursor:pointer;
@@ -209,7 +220,7 @@ font-size: 12px;
 }
 .signup p a {
   font-weight: 700;
-  color: #5a5656;
+  color: black;
 
 }
 
@@ -238,55 +249,33 @@ font-size: 12px;
   }
 }
 input[type=text]{
-  width: 100%;
-  padding: 12px 15px;
+  width: 60%;
+  padding: 10px 10px;
   display: inline-block;
-  border-radius: 4px;
+  border-radius: 12px;
   box-sizing: border-box;
+  
 }
 
 input[type=password] {
-  width: 100%;
+  width: 60%;
   color: white;
-  padding: 12px 15px;
-  border-radius: 4px;
+  padding: 10px 10px;
+  border-radius: 12px;
 
 }
-.radio-inputs {
+.user-input img{
+  margin-top: 20px;
+}
+ .user-input img,input[type=password],input[type=text]{
+ margin-inline: 8px;
+
+ }
+ .radio{
   position: relative;
-  display: flex;
-  flex-wrap: wrap;
-  border-radius: 0.5rem;
-  background-color: #EEE;
-  box-sizing: border-box;
-  box-shadow: 0 0 0px 1px rgba(0, 0, 0, 0.06);
-  padding: 0.25rem;
-  width: 200px;
-  font-size: 12px;
-}
+  line-height: 20px;
+  font-size: 14px;
+  margin: 15px;
 
-.radio-inputs .radio {
-  flex: 1 1 auto;
-  text-align: center;
-}
+ }
 
-.radio-inputs .radio input {
-  display: none;
-}
-
-.radio-inputs .radio .name {
-  display: flex;
-  cursor: pointer;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0.5rem;
-  border: none;
-  padding: 0.5rem 0;
-
-  transition: all .15s ease-in-out;
-}
-
-.radio-inputs .radio input:checked + .name {
-  background-color:#C19A6B ;
-  font-weight: 200;
-}
