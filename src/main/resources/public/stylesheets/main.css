@@ -19,9 +19,9 @@
  margin-right:9% ;
 }
 .body-html {
-    background-image: url("khairat.png"); /* Replace "image.jpg" with the path to your image */
+    background-image: url("/src/main/resources/public/khairat.png");
     background-repeat: no-repeat;
-    background-size: cover; /* Adjust to "contain" if needed */
+    background-size: cover; 
   
   }
   .body-login{
