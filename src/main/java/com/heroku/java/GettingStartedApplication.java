@@ -25,8 +25,8 @@ public class GettingStartedApplication {
   }
 
   @GetMapping("/")
-  public String index() {
-    return "index";
+  public String login() {
+    return "login";
   }
 
   @GetMapping("/database")
@@ -51,9 +51,9 @@ public class GettingStartedApplication {
     }
   }
 
-  @GetMapping("/login")
-  String login() {
-    return "login";
+  @GetMapping("/index.html")
+  String index() {
+    return "index";
   }
 
   public static void main(String[] args) {
