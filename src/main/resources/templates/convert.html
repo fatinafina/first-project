@@ -12,7 +12,7 @@
 <body>
     <body style="background-color: #f6d9be;"></body>
     <div>
-    <form>
+      <form  >  
 
         <div class="split left">
             <div class="centered">
@@ -23,26 +23,37 @@
           <div class="split right">
             <div class="centered">
                 <h1>LOGIN</h1>
-                <br><input type="radio" name="lgstaff" value="staff" id="staff">
-                <label for ="lgstaff">Staff</label>
-                <input type="radio" name="lgmember">
-                <label for="lgmember" name="member">Member</label>
+                <br><input type="radio" id = "staff" name="login" value="staff" >
+                <label for ="staff">Staff</label>
+                <input type="radio" id= "member" name="login" value="member">
+                <label for="member" >Member</label>
                 <label for="username" ></label><br>
-                <input type="text" id="uname" name="uname" placeholder= "Member ID"><br>
-                <label for="password" >Password:</label><br>
-                <input type="password" id="password" name="password" placeholder="Password"><br>
+                <ion-icon name="person-circle-outline"></ion-icon> 
+                <input type="text" id="uname" name="uname" placeholder= "Member ID" required><br>
+                <label for="password" ></label><br>
+                <ion-icon name="lock-closed"></ion-icon>
+                <input type="password" id="password" name="password" placeholder="Password" required><br>
                 <br><input type="submit" value="Login" name="login"></br>
                 <br><a href="#">New Member? Register</a></br>
             </div>
           </div>
 
       </form>
-      <ion-icon name="person-circle-outline"></ion-icon> 
+      <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script> 
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
     </div>
 
-      <style>
+  
+
+
+
+<style>
+
+/* CSS */        
+
 input[type=submit] {
-  width: 30%;
+  width: 60%;
   background-color: #FFFFFF;  
   color: brown;
   display: inline-block;
@@ -51,11 +62,14 @@ input[type=submit] {
   border: 7px;  
   border-radius: 50px;
   cursor: pointer;
+  margin: auto;
+  text-align: center;
   
 }
 
 input[type=submit]:hover {
-  background-color: #af7c74;}
+  background-color: #af7c74;
+}
 
   .split {
   height: 50%;
@@ -68,7 +82,8 @@ input[type=submit]:hover {
   overflow-x: hidden;
   padding-top: 50px;
   opacity: 0.6;
-  background-color: rgb(97, 94, 94);
+  background-color: rgb(114, 111, 111);
+ 
 }
 
 /* Control the left side */
@@ -95,6 +110,7 @@ input[type=submit]:hover {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+  
 }
 
 /* Style the image inside the centered container, if needed */
@@ -106,6 +122,12 @@ input[type=submit]:hover {
 .div{
     border: 20 px;
 }
+
+ion-icon{    
+   
+    right: 100px;    color: #fff;
+    font-size: 1.8em;    top: 20px;
+  }
 
       </style>
 
