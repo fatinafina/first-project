@@ -18,14 +18,7 @@
 .header-center p{
  margin-right:9% ;
 }
-.bg{
-  background-image:url("khairat.png");
-  height: 100%; 
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 
-}
   .body-login{
     background: #938986 ;
     background-repeat: no-repeat;
