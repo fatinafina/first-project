@@ -18,11 +18,24 @@
 .header-center p{
  margin-right:9% ;
 }
-body {
+.body-html {
     background-image: url("/khairat.png"); /* Replace "image.jpg" with the path to your image */
     background-repeat: no-repeat;
     background-size: cover; /* Adjust to "contain" if needed */
   
+  }
+  .body-login{
+    background: #938986 ;
+    background-repeat: no-repeat;
+    padding-top: 40px;
+    width: 100vw;
+    height: 100vh;
+    *{
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+   
   }
 ul {
 text-align: left;
@@ -66,7 +79,7 @@ h3{
 }
 
 .topnav a.active {
-  background-color:#bfb3a9 ;
+  background-color:#bfb3a9;
   color:black;
 }
 
