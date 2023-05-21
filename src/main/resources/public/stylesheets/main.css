@@ -18,7 +18,11 @@
 .header-center p{
  margin-right:9% ;
 }
-
+.backround-html{
+  background-image:url("khairat.png");
+  background-repeat: no-repeat;
+  background-size: cover; 
+}
   .body-login{
     background: #938986 ;
     background-repeat: no-repeat;
