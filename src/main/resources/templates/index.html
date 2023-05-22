@@ -1,13 +1,15 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 
 <head>
     <title>Khairat Kematian </title>
     <link th:href="@{/stylesheets/main.css}" rel="stylesheet" type="text/css">
 
 </head>
-<body>
-  <div class="header">
+
+  <body th:style="'background-image: url('+@{khairat.png}+'); background-repeat: no-repeat, repeat; background-size: cover;'">
+  
+    <div class="header">
     <img src="mosque.png" class="logo" width="100" height="100">
       <div class="header-center">
         <img src="bismillah.png" class="bismillah" width="200" height="100">
@@ -69,13 +71,6 @@
     </div>
      </div>
  
-<style>
-  /*body {
-    background-image:url("khairat.png");-->
-    background-repeat: no-repeat;
-    background-size: cover;} */
- 
-  
-</style>
+
 </body>
 </html>
