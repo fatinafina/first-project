@@ -1,7 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
+*{
+  font-family: 'Roboto Slab', serif;
+}
+.header {
+  overflow: hidden;
+  background-color: #5a5656;
+}
+.logo {
+  float: left;
+ margin: 20px;
+  padding: 12px;
+}
+.header-center {
+  float: center;
+  text-align: center;
+}
+.header-center p{
+ margin-right:9% ;
+}
 body {
-    background-image: url("khairat.png"); /* Replace "image.jpg" with the path to your image */
+    background-image: url("/khairat.png"); /* Replace "image.jpg" with the path to your image */
     background-repeat: no-repeat;
     background-size: cover; /* Adjust to "contain" if needed */
+<<<<<<< HEAD
   }
 ul {
   list-style-type: none;
@@ -77,16 +98,271 @@ nav ul li a:hover {
     margin-top: 100px; 
 
   }
+=======
+>>>>>>> 2b10e73cbfb1879d007e6af43b3703d64dd31dc1
   
-  .box p {
-    margin: 0;
-    font-size: 20px;
-    text-align: center;
-
   }
+ul {
+text-align: left;
+  margin: 0;
+  padding: 0;
+  color: black;
+  font-family: 'Roboto Slab', serif,;
+  font-size: 14px;
+}
+
+h3{
+  color: black;
+  text-decoration: underline;
+}
+
+.topnav {
+  overflow: hidden;
+  background-color:  #bfb3a9;
+  
+}
+.profile{
+  float: left;
+  margin: 10px;
+ margin-left: 10px;
+}
+.bismillah{
+  margin-right: 100px;
+}
+.topnav a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 10px 10px;
+  text-decoration: none;
+  font-size: 15px;
+}
+
+.topnav a:hover {
+  background-color:  #938986;
+  color: black;
+}
+
+.topnav a.active {
+  background-color:#bfb3a9 ;
+  color:black;
+}
+
+.topnav-right {
+  float: right;
+  display: block;
+    padding: 8px;
+  
+  
+}
+
+
+ .container .column {
+	  height: 280px;
+	  padding: 40px;
+    float: right;
+	  background-color: #938986 ;
+	  text-align: center;
+    opacity: 0.9;
+	}
+  /*.box {
+    padding: 50px;
+    margin: 30px;
+    width:280px;
+    float: left;
+    background-color:#938986 ;
+    opacity: 0.9;
+    font-size: 14px;
+  }*/
+  
+ 
   
   .box a {
     color: rgb(145, 111, 78);
+<<<<<<< HEAD
     font-size: 20px;
     text-decoration: underline;
+=======
+    
+>>>>>>> 2b10e73cbfb1879d007e6af43b3703d64dd31dc1
   }
+/*.container .button1 {
+border-radius: 10px;
+background-color: #938986;
+color: black;
+float: center;
+}
+.button1{
+border-radius: 14px;
+margin-top: 10px;
+margin-left: 90px;
+}
+.btn1-c{
+  margin-left: 10px !important;
+  background-color: #5a5656;
+
+}*/
+
+.form-wrapper{
+  max-width: 670px;
+  margin: 0 auto;
+  background-color:#5a5656 ;
+  opacity: 0.9;
+  border-radius: 40px;
+
+}
+.form-container{
+  display: flex;
+  align-items: stretch;
+  color: black;
+  text-align: center;
+  margin: auto;
+}
+.form-left{
+  padding: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+}
+.form-left h2{
+  margin-bottom: 30px;
+  font-size: 20px
+}
+.form-left::before{
+content: "";
+width: 100%;
+height: 70%;
+position: absolute;
+top: 0;
+left:0;
+}
+.login-form{
+  padding-top: 10px;
+  opacity: 0.8;
+}
+.user-input{
+  margin: 30px;
+  text-align: center;
+  color: black;
+  padding: 14px 20px;
+}
+user-input input{
+
+  width: 100%;
+  font-size: 14px;
+  font-family: "Poppins";
+  font-weight: 500;
+  display: inline-block;
+  margin-bottom: 10px;
+  border: 20px solid white;
+}
+.user-input input:focus{
+  outline: none;
+  border-color: black;
+}
+.user-input input::placeholder{
+color: grey;
+font-size: 12px;
+}
+.remember-me{
+  margin-bottom: 20px;
+  padding: 10px 0;
+}
+
+.btn{
+  width: 80%;
+  display: inline-block;
+  color:black;
+  cursor:pointer;
+  font-weight: bold;
+  background-color: bisque;
+  padding: 0 20px;
+  height: 30px;
+  border:1px solid black;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+.btn:hover{
+  opacity: 0.9;
+}
+.btn-signin a{
+  color: black;
+}
+.fp-link{
+  font-size: 14px;
+  font-weight: 500;
+  color: black;
+}
+.signup{
+  margin-top: 20px;
+  color: black;
+}
+.signup p{
+  font-size: 14px;
+}
+.signup p a {
+  font-weight: 700;
+  color: black;
+
+}
+
+@media (max-width:678px){
+  body{
+    background: none;
+    margin: 0;
+  }
+  .form-wrapper{
+    max-width: 400px;
+    padding-top: 10px;
+  }
+  .form-container{
+    position: relative;
+  }
+  .form-left.container{
+    display: none;
+  }
+  .form-left{
+    width: 100%;
+    height: 100%;
+    color: black;
+    text-align: center;
+    margin: auto;
+    
+  }
+}
+input[type=text]{
+  width: 60%;
+  padding: 10px 10px;
+  display: inline-block;
+  border-radius: 12px;
+  box-sizing: border-box;
+  
+}
+
+input[type=password] {
+  width: 60%;
+  color: white;
+  padding: 10px 10px;
+  border-radius: 12px;
+
+}
+.user-input img{
+  margin-top: 20px;
+}
+ .user-input img,input[type=password],input[type=text]{
+ margin-inline: 8px;
+
+ }
+ .radio{
+  position: relative;
+  line-height: 20px;
+  font-size: 14px;
+  margin: 15px;
+
+ }
+
