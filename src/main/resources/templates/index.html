@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head>
-    <title>Khairat Kematian </title>
-    <link th:href="@{/stylesheets/main.css}" rel="stylesheet" type="text/css">
+    <title>Home </title>
+    <link th:href="@{stylesheets/main.css}" rel="stylesheet" type="text/css">
 
 </head>
 
@@ -13,6 +13,7 @@
     <img src="mosque.png" class="logo" width="100" height="100">
       <div class="header-center">
         <img src="bismillah.png" class="bismillah" width="200" height="100">
+        <a th:href="@{/logout}" ><button type="button">Logout</button></a>
         <p><b> Mosque Islamic Khairat Kematian Association<b></p>
       </div>
   </div>

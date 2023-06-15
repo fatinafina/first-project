@@ -1,294 +1,217 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Slab:wght@300&display=swap');
-*{
-  font-family: 'Roboto Slab', serif;
+/*loginpage*/
+.navbar {
+	border-bottom: 1px solid #93806c;
+	background-color: white !important;
+	opacity: 1;
+	font-size:14px;
+}
+.btn.btn-primary.justify-content-center{
+  background-color:		#93806c;
+  border-color: #93806c;
+  color: white;
+}
+.btn.btn-primary {
+  background-color:		white;
+  border-color: white;
+  color: #93806c;
+}
+.btn.btn-primary.justify-content-center:hover{
+  background-color:		white;
+  color:#93806c;
+}
+.btn.btn-primary:hover{
+  background-color:		#93806c;
+  color:white;
+}
+.my-5.display-3{
+  font-size: 80px;
+}
+.login{
+  font-size: 20px;
 }
 
-body {
-  background-image:url("khairat.png");
-  background-repeat: no-repeat;
-  background-size: cover;
+/*end of loginpage*/
+/*registerpage*/
+.btn.btn-success{
+  background-color:		#93806c;
+  color:white !important;
+  border-color: white;
 }
-.header {
-  overflow: hidden;
-  background-color: #5a5656;
+.btn.btn-success:hover{
+  background-color:		white;
+  color:#93806c !important;
+  border-color: #93806c;
 }
-.logo {
-  float: left;
- margin: 20px;
-  padding: 12px;
+/*end of registerpage*/
+/*accountpage*/
+.btn.btn-primary.profile-button{
+  background-color:		#93806c;
+  color:white;
 }
-.header-center {
-  float: center;
-  text-align: center;
+.btn.btn-primary.profile-button:hover{
+  background-color:		white;
+  color:#93806c;
 }
-.header-center p{
- margin-right:9% ;
+.btn.btn-outline-primary{
+  background-color:		#93806c;
+  color:white;
+  border-color: #93806c;
+}
+.email{
+  color:grey;
 }
 
-  .body-login{
-    background: #938986 ;
-    background-repeat: no-repeat;
-    width: 100vw;
-    height: 100vh;
-  
-   
-  }
-ul {
-text-align: left;
-  margin: 0;
-  padding: 0;
+.jumbotron.jumbotron-fluid{
+	background-image: url("../friend.png ") ;
+	/* width: 1040px; */
+ 	min-height: 246px;
+	background-size: 350px 280px;
+	background-position-x: right;
+	background-position-y: bottom;
+	background-repeat: no-repeat;
+	border: 2px solid #f4f4f4;
+	border-radius: 20px;
+}
+.form-floating{
+  margin-left: 30px;
+}
+.register{
+  border: none;
+}
+#profile{
+  background-color: white;
+  border-color: white;
+}
+.nav.flex-column a{
+  color: black !important;
+}
+#fas{
   color: black;
-  font-family: 'Roboto Slab', serif,;
-  font-size: 14px;
+  padding-top: 15px;
+}
+/*end of accountpage*/
+/* paymenthistory */
+
+.card {
+  box-shadow: 0 0.15rem 1.75rem 0 rgb(33 40 50 / 15%);
 }
 
-h3{
-  color: black;
-  text-decoration: underline;
+.fa-2x {
+  font-size: 2em;
 }
 
-.topnav {
-  overflow: hidden;
-  background-color:  #bfb3a9;
-  
+.table-billing-history th, .table-billing-history td {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+  padding-left: 1.375rem;
+  padding-right: 1.375rem;
 }
-.profile{
-  float: left;
-  margin: 10px;
- margin-left: 10px;
-}
-.bismillah{
-  margin-right: 100px;
-}
-.topnav a {
-  float: left;
-  color: black;
-  text-align: center;
-  padding: 10px 10px;
-  text-decoration: none;
-  font-size: 15px;
+.table > :not(caption) > * > *, .dataTable-table > :not(caption) > * > * {
+  padding: 0.75rem 0.75rem;
+  background-color: var(--bs-table-bg);
+  border-bottom-width: 1px;
+  box-shadow: inset 0 0 0 9999px var(--bs-table-accent-bg);
 }
 
-.topnav a:hover {
-  background-color:  #938986;
-  color: black;
+.border-start-primary {
+  border-left-color: #0061f2 !important;
 }
 
-.topnav a.active {
-  background-color:#bfb3a9;
-  color:black;
+.border-start-success {
+  border-left-color: #93806c !important;
 }
-
-.topnav-right {
-  float: right;
-  display: block;
-    padding: 8px;
-  
-  
+.border-start-lg {
+  border-left-width: 0.25rem !important;
 }
-
-
- .container .column {
-	  height: 280px;
-	  padding: 40px;
-    float: right;
-	  background-color: #938986 ;
-	  text-align: center;
-    opacity: 0.9;
-	}
-  /*.box {
-    padding: 50px;
-    margin: 30px;
-    width:280px;
-    float: left;
-    background-color:#938986 ;
-    opacity: 0.9;
-    font-size: 14px;
-  }*/
-  
- 
-  
-  .box a {
-    color: rgb(145, 111, 78);
-    
-  }
-/*.container .button1 {
-border-radius: 10px;
-background-color: #938986;
-color: black;
-float: center;
+.h-100 {
+  height: 100% !important;
 }
-.button1{
-border-radius: 14px;
-margin-top: 10px;
-margin-left: 90px;
-}
-.btn1-c{
-  margin-left: 10px !important;
-  background-color: #5a5656;
-
-}*/
-
-.form-wrapper{
-  max-width: 670px;
-  margin: 0 auto;
-  background-color:#5a5656 ;
-  opacity: 0.9;
-  border-radius: 40px;
-
-}
-.form-container{
-  display: flex;
-  align-items: stretch;
-  color: black;
-  text-align: center;
-  margin: auto;
-}
-.form-left{
-  padding: 70px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: relative;
-}
-.form-left h2{
-  margin-bottom: 30px;
-  font-size: 20px
-}
-.form-left::before{
-content: "";
-width: 100%;
-height: 70%;
-position: absolute;
-top: 0;
-left:0;
-}
-.login-form{
-  padding-top: 10px;
-  opacity: 0.8;
-}
-.user-input{
-  margin: 30px;
-  text-align: center;
-  color: black;
-  padding: 14px 20px;
-}
-user-input input{
-
-  width: 100%;
-  font-size: 14px;
-  font-family: "Poppins";
-  font-weight: 500;
-  display: inline-block;
-  margin-bottom: 10px;
-  border: 20px solid white;
-}
-.user-input input:focus{
-  outline: none;
-  border-color: black;
-}
-.user-input input::placeholder{
-color: grey;
-font-size: 12px;
-}
-.remember-me{
-  margin-bottom: 20px;
-  padding: 10px 0;
-}
-
-.btn{
-  width: 80%;
-  display: inline-block;
-  color:black;
-  cursor:pointer;
-  font-weight: bold;
-  background-color: bisque;
-  padding: 0 20px;
-  height: 30px;
-  border:1px solid black;
-  border-radius: 4px;
-  margin-bottom: 10px;
-  text-transform: capitalize;
-}
-.btn:hover{
-  opacity: 0.9;
-}
-.btn-signin a{
-  color: black;
-}
-.fp-link{
-  font-size: 14px;
-  font-weight: 500;
-  color: black;
-}
-.signup{
-  margin-top: 20px;
-  color: black;
-}
-.signup p{
-  font-size: 14px;
-}
-.signup p a {
-  font-weight: 700;
-  color: black;
-
-}
-
-@media (max-width:678px){
-  body{
-    background: none;
-    margin: 0;
-  }
-  .form-wrapper{
-    max-width: 400px;
-    padding-top: 10px;
-  }
-  .form-container{
+/* end of paymenthistory */
+/* fees */
+.pricing-content{position:relative;}
+.pricing_design{
     position: relative;
-  }
-  .form-left.container{
-    display: none;
-  }
-  .form-left{
+    margin: 0px 15px;
+}
+.pricing_design .single-pricing{
+    background:#93806c;
+    padding: 60px 40px;
+    border-radius:30px;
+    box-shadow: 0 10px 40px -10px rgba(0,64,128,.2);
+    position: relative;
+    z-index: 1;
+}
+.pricing_design .single-pricing:before{
+    content: "";
+    background-color: #fff;
     width: 100%;
     height: 100%;
-    color: black;
-    text-align: center;
-    margin: auto;
-    
-  }
-}
-input[type=text]{
-  width: 60%;
-  padding: 10px 10px;
-  display: inline-block;
-  border-radius: 12px;
-  box-sizing: border-box;
-  
+    border-radius: 18px 18px 190px 18px;
+    border: 1px solid #eee;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    z-index: -1;
 }
 
-input[type=password] {
-  width: 60%;
-  color: white;
-  padding: 10px 10px;
-  border-radius: 12px;
-
+.price-head h2 {
+	margin-bottom: 20px;
+	font-size: 26px;
+	font-weight: 600;
 }
-.user-input img{
-  margin-top: 20px;
+.price-head h1 {
+	font-weight: 600;
+	margin-top: 30px;
+	margin-bottom: 5px;
 }
- .user-input img,input[type=password],input[type=text]{
- margin-inline: 8px;
 
- }
- .radio{
-  position: relative;
-  line-height: 20px;
-  font-size: 14px;
-  margin: 15px;
 
- }
+.single-pricing ul{list-style:none;margin-top: 30px;}
+.single-pricing ul li {
+	line-height: 36px;
+}
+.single-pricing ul li i {
+	background: #93806c;
+	color: #fff;
+	width: 20px;
+	height: 20px;
+	border-radius: 30px;
+	font-size: 11px;
+	text-align: center;
+	line-height: 20px;
+	margin-right: 6px;
+}
 
+.price_btn {
+	background: #93806c;
+	padding: 10px 30px;
+	color: #fff;
+	display: inline-block;
+	margin-top: 20px;
+	border-radius: 2px;
+	-webkit-transition: 0.3s;
+	transition: 0.3s;
+}
+.price_btn:hover{
+  background:white;
+  color: #93806c;
+}
+a{
+text-decoration:none;    
+}
+
+.section-title {
+    margin-bottom: 60px;
+}
+.text-center {
+    text-align: center!important;
+}
+
+.section-title h2 {
+    font-size: 45px;
+    font-weight: 600;
+    margin-top: 0;
+    position: relative;
+    text-transform: capitalize;
+}
+/* end of fees */

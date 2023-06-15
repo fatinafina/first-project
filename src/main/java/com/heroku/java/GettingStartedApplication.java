@@ -6,10 +6,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import jakarta.servlet.http.HttpSession;
+
 import javax.sql.DataSource;
 import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.Map;
+
 /*import org.jscience.physics.amount.Amount;
 import org.jscience.physics.model.RelativisticModel;
 import javax.measure.unit.SI;
@@ -22,11 +25,6 @@ public class GettingStartedApplication {
   @Autowired
   public GettingStartedApplication(DataSource dataSource) {
     this.dataSource = dataSource;
-  }
-
-  @GetMapping("/")
-  public String login() {
-    return "login";
   }
 
   @GetMapping("/database")
@@ -51,9 +49,9 @@ public class GettingStartedApplication {
     }
   }
 
-  @GetMapping("/index.html")
+  @GetMapping("/error")
   String index() {
-    return "index";
+    return "error";
   }
 
   public static void main(String[] args) {
