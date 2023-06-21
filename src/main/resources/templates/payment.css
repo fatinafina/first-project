@@ -1,0 +1,42 @@
+
+.container .h8 {
+    font-size: 30px;
+    font-weight: 800;
+    text-align: center;
+}
+.btn {
+    width: 50%;
+    height: 70px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 15px;
+    background-image: linear-gradient(to right, rgb(126, 81, 47) 0%, white 51%, #93806c 100%) !important;
+    border: none;
+    transition: 0.5s;
+    background-size: 200% auto;
+    margin: 0%;
+
+    
+    
+
+}
+
+.form-control {
+    color: white;
+    border: 2px solid transparent;
+    height: 60px;
+    padding-left: 20px;
+    vertical-align: middle;
+}
+
+
+.text {
+    font-size: 14px;
+    font-weight: 600;
+}
+
+::placeholder {
+    font-size: 14px;
+    font-weight: 600;
+}
