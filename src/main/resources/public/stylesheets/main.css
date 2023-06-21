@@ -283,3 +283,28 @@ input[type=password] {
 
  }
 
+/*Contact */
+.lead{
+  font-size: 14px ;
+}
+
+.card{
+  border-color: #938986;
+  border-width: 5px;
+  margin-top: 10px;
+  
+}
+
+.img-fluid{
+  width: 600px;
+  margin-top: 20px;
+}
+
+.flex-allign{
+
+  width: 70%;
+  height: 10%; 
+  margin-left: 20%;
+}
+
+
