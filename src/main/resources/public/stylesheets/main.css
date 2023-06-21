@@ -194,7 +194,7 @@
 }
 .price_btn:hover{
   background:white;
-  color: #93806c;
+  color: #93806c ;
 }
 a{
 text-decoration:none;    
@@ -215,3 +215,9 @@ text-decoration:none;
     text-transform: capitalize;
 }
 /* end of fees */
+/* view member */
+#delete{
+  background-color: rgb(189, 79, 79) !important;
+  color: white !important;
+}
+/* end of view member*/
