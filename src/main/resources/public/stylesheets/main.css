@@ -221,3 +221,34 @@ text-decoration:none;
   color: white !important;
 }
 /* end of view member*/
+/*Start of dashboard*/
+
+.dashboard-con {
+	padding: 20px 40px;
+}
+
+.banner-welcome {
+	background-color: #93806c70;
+  background-image: url("../family-2.png");
+	/* width: 1040px; */
+	min-height: 400px;
+
+	background-repeat: no-repeat;
+	border: 2px solid #f4f4f4;
+	border-radius: 20px;
+}
+
+.border-icon-status {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border: 2px solid rgba(0, 0, 0, 0.175);
+	border-radius: 10px;
+	min-width: 40%;
+	min-height: 100%;
+}
+
+.border-icon-status span {
+	font-size: 40px;
+}
+/*End of dashboard*/

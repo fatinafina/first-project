@@ -45,12 +45,12 @@ public class AccountController {
                 String ic = resultSet.getString("ic");
                 String email = resultSet.getString("email");
                 String password = resultSet.getString("password");
-                String role = resultSet.getString("role");
+                String roles = resultSet.getString("role");
                 System.out.println(">>>> " + name);
                 model.addAttribute("account", new Users(userid,name,ic,email,password));
             }
 
-            return "account_m";
+            return "account_s";
         }catch(Exception e){
             System.out.println(e.getMessage());
             return "error";
@@ -65,7 +65,10 @@ public class AccountController {
         //    String sql = "SELECT * FROM khairatuser WHERE userid=?";
         //    var statement = connection.prepareStatement(sql);
 
+        System.out.println(users.getName());
+        System.out.println(users.getIc());
             System.out.println(users.getEmail());
+              System.out.println(users.getPassword());
             // String name = users.getName();
             // String ic = users.getIc();
             // String email = users.getEmail();
@@ -78,7 +81,7 @@ public class AccountController {
             // prepareStatement.executeUpdate();
             connection.close();
             
-            return "account_m";
+            return "account_s";
 
         } catch (Throwable t) {
             System.out.println("message" + t.getMessage());

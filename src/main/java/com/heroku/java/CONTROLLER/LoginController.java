@@ -55,7 +55,7 @@ public class LoginController {
         //     System.out.println("Session expired or invalid...");
         //     return "redirect:/";
         // }
-        return "index";
+        return "dashboard";
     }
 
     @PostMapping("/login-account")

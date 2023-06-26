@@ -89,7 +89,7 @@
                   <p class="mb-0">Name</p>
                 </div>
                 <div class="col-sm-9">
-                  <input type="text" class="register" value="SITI HUMAIRAH">
+                  <input type="text" class="register" th:value="${account.name}">
                 </div>
               </div>
               <hr>
@@ -98,7 +98,7 @@
                   <p class="mb-0">IC Number</p>
                 </div>
                 <div class="col-sm-9">
-                  <input type="text" class="register" value="020222-04-0101">
+                  <input type="text" class="register" th:value="${account.ic}">
                 </div>
               </div>
               <hr>
@@ -107,7 +107,7 @@
                   <p class="mb-0">Email</p>
                 </div>
                 <div class="col-sm-9">
-                  <input type="text" class="register" value="siti@gmail.com">
+                  <input type="text" class="register" th:value="${account.email}">
                 </div>
               </div>
               <hr>
@@ -116,7 +116,7 @@
                   <p class="mb-0">Password</p>
                 </div>
                 <div class="col-sm-9">
-                 <input type="password" class="register" value="*******">
+                 <input type="password" class="register" th:value="${account.password}">
                 </div>
               </div>
             </div>
@@ -165,7 +165,7 @@
       </div>
 
     </div>
-
+  </div>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
       crossorigin="anonymous"></script>
