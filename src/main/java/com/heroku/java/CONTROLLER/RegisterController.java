@@ -27,7 +27,7 @@ public class RegisterController {
         this.dataSource = dataSource;
     }
 
-    @GetMapping("/signup")
+    @GetMapping("/register")
     public String signUp() {
         return "register";
     }

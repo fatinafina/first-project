@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.heroku.java.MODEL.Users;
 
@@ -22,71 +23,65 @@ import java.util.Map;
 @Controller
 public class AccountController {
 
-    private final DataSource dataSource;
+  private final DataSource dataSource;
 
-    @Autowired
-    public AccountController(DataSource dataSource) {
-        this.dataSource = dataSource;
+  @Autowired
+  public AccountController(DataSource dataSource) {
+    this.dataSource = dataSource;
+  }
+
+  @GetMapping("/profile")
+  public String showAccount(Model model) {
+    try {
+      Connection connection = dataSource.getConnection();
+      String sql = "SELECT * FROM khairatuser where userid=?";
+      var statement = connection.prepareStatement(sql);
+      int id = 1;
+      statement.setInt(1, id);
+      final var resultSet = statement.executeQuery();
+
+      while (resultSet.next()) {
+        int userid = resultSet.getInt("userid");
+        String name = resultSet.getString("name");
+        String ic = resultSet.getString("ic");
+        String email = resultSet.getString("email");
+        String password = resultSet.getString("password");
+        String roles = resultSet.getString("role");
+        System.out.println(">>>> " + name);
+        model.addAttribute("account", new Users(userid, name, ic, email, password));
+      }
+
+      return "account_s";
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+      return "error";
     }
 
-    @GetMapping("/account")
-    public String showAccount(Model model) {
-        try{
-            Connection connection = dataSource.getConnection();
-            String sql = "SELECT * FROM khairatuser where userid=?";
-            var statement = connection.prepareStatement(sql);
-            int id = 1;
-            statement.setInt(1, id);
-            final var resultSet = statement.executeQuery();
+  }
 
-            while(resultSet.next()){
-                int userid = resultSet.getInt("userid");
-                String name = resultSet.getString("name");
-                String ic = resultSet.getString("ic");
-                String email = resultSet.getString("email");
-                String password = resultSet.getString("password");
-                String roles = resultSet.getString("role");
-                System.out.println(">>>> " + name);
-                model.addAttribute("account", new Users(userid,name,ic,email,password));
-            }
+  @PostMapping("/update-account")
+  public String updateAccount(@ModelAttribute("profileAcc") Users users,
+      @RequestParam(name = "userid") int id) {
+    System.out.println("id:" + id);
+    try (Connection connection = dataSource.getConnection()) {
+      String sql = "UPDATE khairatuser SET name=?, ic=?, email=?, password=? WHERE userid=?";
+      var pstatement = connection.prepareStatement(sql);
+      System.out.println(users.getName());
+      pstatement.setString(1, users.getName());
+      pstatement.setString(2, users.getIc());
+      pstatement.setString(3, users.getEmail());
+      pstatement.setString(4, users.getPassword());
+      pstatement.setInt(5, id);
 
-            return "account_s";
-        }catch(Exception e){
-            System.out.println(e.getMessage());
-            return "error";
-        }
-        
+      pstatement.executeUpdate();
+
+      connection.close();
+
+      return "redirect:/profile";
+
+    } catch (Throwable t) {
+      System.out.println("message" + t.getMessage());
+      return "error";
     }
-
-    @PostMapping("/update-account")
-    public String updateAccount(@ModelAttribute("user") Users users, @RequestAttribute(name="id") int id) {
-
-        try (Connection connection = dataSource.getConnection()) {
-        //    String sql = "SELECT * FROM khairatuser WHERE userid=?";
-        //    var statement = connection.prepareStatement(sql);
-
-        System.out.println(users.getName());
-        System.out.println(users.getIc());
-            System.out.println(users.getEmail());
-              System.out.println(users.getPassword());
-            // String name = users.getName();
-            // String ic = users.getIc();
-            // String email = users.getEmail();
-            // String password = users.getPassword();
-
-            // prepareStatement.setString(1, users.getName());
-            // prepareStatement.setString(2, users.getIc());
-            // prepareStatement.setString(3, users.getEmail());
-            // prepareStatement.setString(4, users.getPassword());
-            // prepareStatement.executeUpdate();
-            connection.close();
-            
-            return "account_s";
-
-        } catch (Throwable t) {
-            System.out.println("message" + t.getMessage());
-            return "error";
-        }
-    }
+  }
 }
-

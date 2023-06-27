@@ -26,6 +26,20 @@ public class GettingStartedApplication {
   public GettingStartedApplication(DataSource dataSource) {
     this.dataSource = dataSource;
   }
+  @GetMapping("/contact")
+  String showContact(){
+    return "contact";
+  }
+
+  @GetMapping("/fees")
+  String showFees(){
+    return "fees";
+  }
+
+  @GetMapping("/about-us")
+  String showAboutUse(){
+    return "about-us";
+  }
 
   @GetMapping("/database")
   String database(Map<String, Object> model) {

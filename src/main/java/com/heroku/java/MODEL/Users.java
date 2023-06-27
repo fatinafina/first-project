@@ -14,6 +14,10 @@ public class Users {
         this.email = email;
         this.password = password;
     }
+
+    public Users() {
+      
+    }
     
     public String getName() {
         return name;
