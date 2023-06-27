@@ -22,6 +22,84 @@ body {
     background-image: url("/khairat.png"); /* Replace "image.jpg" with the path to your image */
     background-repeat: no-repeat;
     background-size: cover; /* Adjust to "contain" if needed */
+<<<<<<< HEAD
+  }
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #ccb585;
+}
+
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: rgb(88, 64, 64);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 80px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #333;
+    padding: 50px;
+}
+
+nav ul li a:hover {
+    color: #666;
+    background-color: #e6e6e6;
+}
+
+
+  .column {
+	  flex: 30%;
+	  height: 300px;
+	  padding: 90px;
+	  margin-left: 50px;
+	  background-color: #cccccc;
+	  text-align: center;
+      opacity:0.6;
+      float:right;
+	}
+
+	.container {
+	display: flex;
+    margin : 100 px;
+    height:90px;
+}
+
+  .container.box {
+    display: flex;
+    justify-content: left;
+    align-items: left;
+    height:50vh;
+  }
+
+  .box {
+    align-items:center;
+    padding: 50px;
+    background-color: #bfb3a9;
+    bottom:90px;
+    margin-top: 100px; 
+
+  }
+=======
+>>>>>>> 2b10e73cbfb1879d007e6af43b3703d64dd31dc1
   
   }
 ul {
@@ -101,7 +179,12 @@ h3{
   
   .box a {
     color: rgb(145, 111, 78);
+<<<<<<< HEAD
+    font-size: 20px;
+    text-decoration: underline;
+=======
     
+>>>>>>> 2b10e73cbfb1879d007e6af43b3703d64dd31dc1
   }
 /*.container .button1 {
 border-radius: 10px;
