@@ -40,6 +40,10 @@ public class GettingStartedApplication {
   String showAboutUse(){
     return "about-us";
   }
+   @GetMapping("/account-staff")
+  String showStaff(){
+    return "account-staff";
+  }
 
   @GetMapping("/database")
   String database(Map<String, Object> model) {
