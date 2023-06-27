@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Staff</title>
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link th:href="@{stylesheets/main.css}" rel="stylesheet" type="text/css">
+  <script src="scripts.js"></script>
+  <script src="https://kit.fontawesome.com/5af8cda4e6.js" crossorigin="anonymous"></script>
+</head>
+<body style="height: 100vh; background-color: white;">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+
+    <div class="container">
+        <div class="card">
+            <div class="form">
+                <div class="left-side">
+                    <div class="left-heading">
+                        <h3>ADD </h3>
+                    </div>
+
+                    <ul class="progress-bar">
+                        <li class="active">Personal Information</li>
+                    </ul>
+    
+                </div>
+                <div class="right-side">
+                    <div class="main active">
+                        <small><i class="fa fa-smile-o"></i></small>
+                        <div class="text">
+                            <h2>Staff Personal Information</h2>
+                            <p>Enter personal information.</p>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required require id="user_name">
+                                <span>First Name</span>
+                            </div>
+                            <div class="input-div">
+                                <input type="text" required>
+                                <span>Last Name</span>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>Phone number</span>
+                            </div>
+                            <div class="input-div">
+                                <input type="text" required require>
+                                <span>IC Number</span>
+                            </div>
+                        </div>
+                        <div class="input-text">
+                            <div class="input-div">
+                                <input type="password" required require>
+                                <span>Password</span>
+                            </div>
+                        </div>
+                    
+                        <div class="buttons">
+                            <button class="next_button">Submit</button>
+                            <button class="cancel">Cancel</button>
+                        </div>
+                    </div>
+    
+                    <div class="main">
+                        <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                            <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none" />
+                            <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8" />
+                        </svg>
+    
+                        <div class="text congrats">
+                            <h2>Congratulations!</h2>
+                            <p>Thanks Mr./Mrs. <span class="shown_name"></span> your information have been submitted
+                                successfully for the future reference we will contact you soon.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<script>
+var next_click = document.querySelectorAll(".next_button");
+var main_form = document.querySelectorAll(".main");
+var step_list = document.querySelectorAll(".progress-bar li");
+let formnumber = 0;
+
+jannah, [27/6/2023 9:08 PM]
+next_click.forEach(function (next_click_form) {
+    next_click_form.addEventListener('click', function () {
+        if (!validateform()) {
+            return false
+        }
+        formnumber++;
+        updateform();
+        progress_forward();
+        contentchange();
+    });
+});
+
+var username = document.querySelector("#user_name");
+var shownname = document.querySelector(".shown_name");
+
+
+var submit_click = document.querySelectorAll(".submit_button");
+submit_click.forEach(function (submit_click_form) {
+    submit_click_form.addEventListener('click', function () {
+        shownname.innerHTML = username.value;
+        formnumber++;
+        updateform();
+    });
+});
+
+function updateform() {
+    main_form.forEach(function (mainform_number) {
+        mainform_number.classList.remove('active');
+    })
+    main_form[formnumber].classList.add('active');
+}
+
+function validateform() {
+    validate = true;
+    var validate_inputs = document.querySelectorAll(".main.active input");
+    validate_inputs.forEach(function (vaildate_input) {
+        vaildate_input.classList.remove('warning');
+        if (vaildate_input.hasAttribute('require')) {
+            if (vaildate_input.value.length == 0) {
+                validate = false;
+                vaildate_input.classList.add('warning');
+            }
+        }
+    });
+    return validate;
+
+}
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+crossorigin="anonymous"></script>
+
+</body>
+</html>
