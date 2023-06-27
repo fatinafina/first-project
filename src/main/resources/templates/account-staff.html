@@ -6,6 +6,12 @@
     <title>Create Staff</title>
     <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{https://fonts.googleapis.com/icon?family=Material+Icons}">
+    <link
+    rel="stylesheet"
+    th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css}"
+  />
+    
   <link th:href="@{stylesheets/main.css}" rel="stylesheet" type="text/css">
   <script src="scripts.js"></script>
   <script src="https://kit.fontawesome.com/5af8cda4e6.js" crossorigin="anonymous"></script>
@@ -30,13 +36,208 @@
           <i class="bi bi-plus-circle"></i>
           <b>Add Account</b>
         </a>
-      
+      </div>
+      <div id="userTable" class="d-flex flex-wrap justify-content-evenly">
+        <div
+          class="accountCon d-flex justify-content-evenly align-items-center col-5"
+          
+        >
+          <div class="firstletterBox">
+            <h2 th:text="hi">
+             
+            </h2>
+          </div>
+          <div class="accountnamebox">
+            <span
+              class="accountnamebox-firstRow p-2 bd-highlight"
+              th:text="SITI HUMAIRAH"
+              ></span
+            >
+            <br />
+            <br />
+            <span
+              class="accountnamebox-secondRow p-2 bd-highlight"
+              th:text="Manager"
+              ></span
+            >
+          </div>
+          <div class="settingsBox dropdown-center">
+            <button
+              class="btn"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+            <i class="bi bi-three-dots-vertical" style="margin-top: 10px;"></i>
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <a
+                  class="dropdown-item"
+                >
+                <i class="bi bi-pencil-square" style="margin-top: 10px;"></i>
+                  Edit
+                </a>
+              </li>
+              <li>
+                <a
+                  id="delete-account-btn"
+                  class="dropdown-item"
+                  data-bs-target="#deleteModal"
+                >
+                <i class="bi bi-trash3" style="margin-top: 10px;"></i>
+                  Delete
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+       <!-- Modal -->
+       <div
+       class="modal fade"
+       id="deleteModal"
+       tabindex="-1"
+       aria-labelledby="deleteModalLabel"
+       aria-hidden="true"
+     >
+       <div class="modal-dialog modal-dialog-centered">
+         <div class="modal-content">
+           <div class="modal-header">
+             <h1 class="modal-title fs-5" id="deleteModalLabel">
+               <b>Delete Account?</b>
+             </h1>
+             <!-- <button
+               type="button"
+               class="btn-close"
+               data-bs-dismiss="modal"
+               aria-label="Close"
+               
+             ></button> -->
+           </div>
+           <div class="modal-vims-body modal-body">
+            <span
+              >Deleting a account will permanently remove the user from the
+              database.</span
+            >
+          </div>
+          <div class="modal-footer">
+          
+              <button
+                type="button"
+                class="modal-vims-Button btn btn-light"
+                data-bs-dismiss="modal"
+              >
+                <b>No, Keep Account</b>
+              </button>
+            </a>
+
+            <button type="button" onclick="redirectDelete()" class="modal-vims-Button btn btn-primary" >
+              <b>Yes, Delete Account</b>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- end Modal -->
+  </section>
+  <!-- Toast -->
+  <div class="toast-container position-fixed bottom-0 end-0 p-3">
+    <div
+      id="liveToast"
+      class="toast"
+      role="alert"
+      aria-live="assertive"
+      aria-atomic="true"
+    >
+      <div class="toast-header">
+        <img
+          src="../icon-192x192.png"
+          class="rounded me-2"
+          alt="..."
+          width="20px"
+        />
+        <strong class="me-auto">VFIMS</strong>
+        <!-- <small>11 mins ago</small> -->
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="toast"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="toast-body" id="display_message">
+        <!-- Account successfully created -->
+      </div>
+    </div>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
   integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
   crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
   integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
   crossorigin="anonymous"></script>
+  <script>
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    var create_success = urlParams.get("create_success");
+    var update_success = urlParams.get("update_success");
+    var error_code = urlParams.get("error_code");
+    var deleteId = urlParams.get("delete");
+    var hasParam = window.location.href.indexOf("delete");
+    // const message = document.getElementById("display_message").innerHTML;
+    var href = document.getElementById("delete-account-btn").href;
+    document.getElementById("delete-account-btn").onClick = function () {
+      // var href = document.querySelector("a").href;
+      console.log("href", href);
+    };
+    function redirectDelete(){
+      location.href='/deleteAccount?staffid=' + deleteId.toString();
+    }
+    // const toastTrigger = document.getElementById("liveToastBtn");
+    const toastLiveExample = document.getElementById("liveToast");
+    const toastBootstrap =
+      bootstrap.Toast.getOrCreateInstance(toastLiveExample);
+    var myModal = new bootstrap.Modal(
+      document.getElementById("deleteModal"),
+      {}
+    );
 
+    if (hasParam) {
+      if (deleteId != null) {
+        myModal.show();
+        console.log("deleteId.toString()", deleteId.toString());
+      }
+    }
+
+    if (create_success != null) {
+      if (create_success.toString() == "true") {
+        toastBootstrap.show();
+        document.getElementById("display_message").innerHTML =
+          "Account successfully created";
+      }
+    }
+    if (update_success != null) {
+      if (update_success.toString() == "true") {
+        toastBootstrap.show();
+        document.getElementById("display_message").innerHTML =
+          "Account successfully updated";
+      }
+    }
+    if(error_code != null){
+      if (error_code.toString() == "101") {
+        toastBootstrap.show();
+        document.getElementById("display_message").innerHTML =
+          "Can't delete superadmin account...";
+      }
+    }
+    if(error_code != null){
+      if(error_code.toString() == "102"){
+        toastBootstrap.show();
+        document.getElementById("display_message").innerHTML =
+          "Can't delete own session account...";
+      }
+    }
+  </script>
 </body>
 </html>
