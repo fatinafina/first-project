@@ -44,7 +44,10 @@ public class GettingStartedApplication {
   String showStaff(){
     return "account-staff";
   }
-
+   @GetMapping("/create-staff")
+  String createStaff(){
+    return "create-staff";
+  }
   @GetMapping("/database")
   String database(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
