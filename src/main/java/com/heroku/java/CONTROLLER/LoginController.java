@@ -47,15 +47,15 @@ public class LoginController {
         return "redirect:/";
     }
 
-    @GetMapping("/home")
-    public String home(HttpSession session) {
+    @GetMapping("/home-s")
+    public String homeStaff(HttpSession session) {
         // if (session.getAttribute("email") != null) {
         //     return "index";
         // } else {
         //     System.out.println("Session expired or invalid...");
         //     return "redirect:/";
         // }
-        return "dashboard";
+        return "dashboard-s";
     }
 
     @PostMapping("/login-account")

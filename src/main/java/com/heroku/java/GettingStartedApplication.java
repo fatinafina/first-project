@@ -26,27 +26,31 @@ public class GettingStartedApplication {
   public GettingStartedApplication(DataSource dataSource) {
     this.dataSource = dataSource;
   }
-  @GetMapping("/contact")
+  @GetMapping("/contact-s")
   String showContact(){
-    return "contact";
+    return "contact-s";
   }
 
-  @GetMapping("/fees")
-  String showFees(){
-    return "fees";
-  }
-
-  @GetMapping("/about-us")
+  @GetMapping("/about-us-s")
   String showAboutUse(){
-    return "about-us";
+    return "about-us-s";
   }
-   @GetMapping("/account-staff")
+
+   @GetMapping("/account-s")
   String showStaff(){
-    return "account-staff";
+    return "account-s";
   }
    @GetMapping("/create-staff")
   String createStaff(){
     return "create-staff";
+  }
+     @GetMapping("/package-s")
+  String createPackage(){
+    return "package-s";
+  }
+  @GetMapping("/home-m")
+  String homeMember(){
+    return "dashboard-m";
   }
   @GetMapping("/database")
   String database(Map<String, Object> model) {

@@ -62,7 +62,7 @@
 }
 
 .jumbotron.jumbotron-fluid{
-	background-image: url("../friend.png ") ;
+background-image: url("https://media.licdn.com/dms/image/C5112AQH5pQwkJY_jGw/article-cover_image-shrink_720_1280/0/1553452562046?e=2147483647&v=beta&t=BOvD_BndoY4YO2gTI1SIVpmCYK8EXKLgzlHwqyr-GRE");
 	/* width: 1040px; */
  	min-height: 246px;
 	background-size: 350px 280px;
@@ -215,12 +215,7 @@ text-decoration:none;
     text-transform: capitalize;
 }
 /* end of fees */
-/* view member */
-#delete{
-  background-color: rgb(189, 79, 79) !important;
-  color: white !important;
-}
-/* end of view member*/
+
 /*Start of dashboard*/
 
 .dashboard-con {
@@ -232,7 +227,7 @@ text-decoration:none;
   background-image: url("../family-2.png");
 	/* width: 1040px; */
 	min-height: 400px;
-
+  
 	background-repeat: no-repeat;
 	border: 2px solid #f4f4f4;
 	border-radius: 20px;
@@ -252,96 +247,3 @@ text-decoration:none;
 	font-size: 40px;
 }
 /*End of dashboard*/
-/*create staff*/
-.formBox2 {
-  padding: 10px;
-  border: 1px solid #f4f4f4;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-}
-
-.vims-containerTop {
-  margin: 20px;
-}
-
-.addAccountButton {
-  background: #ffffff;
-  border: 1px solid #f4f4f4;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  padding: 10px;
-  text-decoration: none;
-  color: black;
-}
-
-.addAccountButton:hover {
-  background: lightgray;
-}
-
-.img-button {
-  width: 20px;
-}
-.accountCreateCon {
-  background: #ffffff;
-  border: 1px solid #f4f4f4;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  margin: 10px;
-  padding: 15px;
-}
-.accountCon {
-  background: #ffffff;
-  border: 1px solid #f4f4f4;
-  box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 20px;
-  margin: 10px;
-  padding: 15px;
-}
-
-.firstletterBox {
-  border-radius: 20px;
-  background-color: #3d65e8;
-  color: #ffffff;
-  font-weight: bold;
-  height: 100%;
-  width: 30%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-h2 {
-  margin-bottom: 0 !important;
-}
-
-.accountnamebox {
-  width: 100%;
-  overflow: hidden;
-  white-space: nowrap;
-  margin-left: 10px;
-}
-
-.accountnamebox-firstRow {
-  font-weight: bold;
-  padding: 0px;
-}
-.accountnamebox-secondRow {
-  color: #0563c1;
-  padding: 0px;
-}
-
-.settingsBox {
-  height: 100%;
-}
-
-.modal-vims-body {
-  background-color: #f0f2f5;
-  color: #000000e9;
-}
-
-.modal-vims-Button {
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  border-radius: 20px;
-  padding: 10px 15px;
-}
-  /*end of create staff*/

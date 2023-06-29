@@ -31,8 +31,8 @@ public class AccountController {
     this.dataSource = dataSource;
   }
 
-  @GetMapping("/profile")
-  public String showStaff(Model model) {
+  @GetMapping("/profile-s")
+  public String showStaffProfile(Model model) {
     try {
       Connection connection = dataSource.getConnection();
       String sql = "SELECT * FROM khairatuser where userid=?";
@@ -78,7 +78,7 @@ public class AccountController {
 
       connection.close();
 
-      return "redirect:/profile";
+      return "redirect:/profile-s";
 
     } catch (Throwable t) {
       System.out.println("message" + t.getMessage());
