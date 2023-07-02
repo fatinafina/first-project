@@ -5,13 +5,9 @@
   <meta charset="UTF-8" />
   <title>Profile</title>
 
-  <link
-    th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}"
-    rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
-    crossorigin="anonymous"
-  />
-  <link th:href="@{stylesheets/main.css}" rel="stylesheet" type="text/css" />
+  <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link th:href="@{stylesheets/main.css}" rel="stylesheet" type="text/css">
   <script src="scripts.js"></script>
   <link
   rel="stylesheet"
@@ -37,16 +33,14 @@
         <!-- Left links -->
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="home-s">Home</a>
+            <a class="nav-link" aria-current="page" href="home-m">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="about-us-s">About Us</a>
+            <a class="nav-link" aria-current="page" href="about-us-m">About Us</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="contact-s">Contact</a>
+            <a class="nav-link" aria-current="page" href="contact-m">Contact</a>
           </li>
-
-
         </ul>
         <!-- Left links -->
       </div>
@@ -69,9 +63,8 @@
 
               <h4 class="mb-2">NURIN JANNAH</h4>
               <p class="text-muted mb-4">@Member <span class="mx-2">|</span> <a class="email"
-                  href="#!">nurin@gmail.com</a></p>
-              <div class="mb-4 pb-2">
-              </div>
+                  href="#!">jannah@gmail.com</a></p>
+              
             </div>
 
 
@@ -80,8 +73,7 @@
       </div>
       <div class="card" style="border-radius: 15px; border-color: #93806c;">
         <div class="card-body p-4">
-          <form th:action="@{/update-account?id=} +${account.userid}" method="post"
-          modelAttribute="user">
+          <form >
             <h3 class="mb-2">Personal Information</h3>
             <hr class="my-4" style="background-color: #93806c;">
             <div class="card mb-4">
@@ -91,7 +83,7 @@
                     <p class="mb-0">Name</p>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" name="name" class="register" th:value="${account.name}">
+                    <input type="text" name="name" class="register" th:value="name">
                   </div>
                 </div>
                 <hr>
@@ -100,7 +92,7 @@
                     <p class="mb-0">IC Number</p>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" name="ic" class="register" th:value="${account.ic}">
+                    <input type="text" name="ic" class="register" th:value="ic">
                   </div>
                 </div>
                 <hr>
@@ -109,7 +101,7 @@
                     <p class="mb-0">Email</p>
                   </div>
                   <div class="col-sm-9">
-                    <input type="text" name="email" class="register" th:value="${account.email}">
+                    <input type="text" name="email" class="register" th:value="email">
                   </div>
                 </div>
                 <hr>
@@ -118,14 +110,40 @@
                     <p class="mb-0">Password</p>
                   </div>
                   <div class="col-sm-9">
-                    <input type="password" name="password" class="register" th:value="${account.password}">
+                    <input type="password" name="password" class="register" th:value="password">
                   </div>
                 </div>
               </div>
             </div>
             <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save
                 Profile</button>
+              
             </div>
+            <div class="delete d-flex justify-content-end">
+              <button type="button" class="btn btn-outline-primary mb-3"
+              data-bs-toggle="modal" data-bs-target="#exampleModal">
+              <i class="bi bi-trash3 fa-sm"></i></button>
+              <div class="modal fade" id="exampleModal" tabindex="-1"
+              aria-labelledby="exampleModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                  <div class="modal-content">
+                      <div class="modal-header">
+                          <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure?</h1>
+                          <button type="button" class="btn-close"
+                              data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">Do you really want to delete this record? This process cannot be undone</div>
+                      <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary"
+                              data-bs-dismiss="modal">Cancel</button>
+                          <button type="button" class="btn btn-primary" id="delete">Delete</button>
+                      </div>
+                  </div>
+              </div>
+          </div>
+              
+            </div>
+           
           </form>
         </div>
       </div>
@@ -135,41 +153,59 @@
 
 
 
-  <div class="offcanvas offcanvas-start" data-bs-backdrop="static" tabindex="-1" id="staticBackdrop"
-    aria-labelledby="staticBackdropLabel">
-    <div class="offcanvas-header">
-      <h5 class="offcanvas-title" id="staticBackdropLabel"></h5>
-      <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-    </div>
-    <div class="offcanvas-body">
-      <div>
-        <div class="offcanvas-body">
-          <div class="profile d-flex flex-column justify-content-center align-items-center">
-            <img src="girl (1).png" alt="girl" width="70" height="70"><br>
-            <h4 class="mb-2">NUR FATIMAH</h4>
-            <p class="text-muted mb-4">@Member<span class="mx-2">|</span> <a class="email"
-                href="#!">fatimah@gmail.com</a></p>
+  <div
+      class="offcanvas offcanvas-start"
+      data-bs-backdrop="static"
+      tabindex="-1"
+      id="staticBackdrop"
+      aria-labelledby="staticBackdropLabel"
+    >
+      <div class="offcanvas-header" style="background-color: #93806c70">
+        <h5 class="offcanvas-title" id="staticBackdropLabel"></h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="offcanvas"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="offcanvas-body" style="background-color: #93806c70">
+        <div>
+          <div class="offcanvas-body">
+            <div
+              class="profile d-flex flex-column justify-content-center align-items-center"
+            >
+              <img src="girl (1).png" alt="girl" width="70" height="70" /><br />
+              <h4 class="mb-2">NURIN JANNAH</h4>
+              <p class="text-muted mb-4"> <span class="mx-2" th:text="${session.role}"></span>| 
+                <a class="email" th:text="${session.email}"></a></p>
+              
+            </div>
+            <hr class="my-4" />
+            <nav class="nav flex-column">
+            
+              <a
+                class="nav-link d-flex flex-column justify-content-center align-items-center"
+                href="profile-m"
+                ><i class="bi bi-person fa-lg"></i>Profile</a
+              >
+          
+              <a
+              class="nav-link d-flex flex-column justify-content-center align-items-center"
+              href="/payment-history-m"
+              ><i class="bi bi-credit-card"></i>Payment</a
+            >
+              <a
+                class="nav-link d-flex flex-column justify-content-center align-items-center"
+                href="/logout"
+                ><i class="bi bi-box-arrow-left fa-lg"></i>Logout</a
+              >
+            </nav>
           </div>
-          <hr class="my-4">
-          <nav class="nav flex-column">
-
-            <a class="nav-link active  d-flex flex-column justify-content-center align-items-center " href="#"><i
-                class="fa-solid fa-house" id="fas"></i>Home</a>
-            <a class="nav-link  d-flex flex-column justify-content-center align-items-center" href="#"><i
-                class="fa-solid fa-user" id="fas"></i>Profile</a>
-            <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="#"><i
-                class="fa-solid fa-credit-card"></i>Billing</a>
-            <a class="nav-link d-flex flex-column justify-content-center align-items-center" href="#"><i
-                class="fa-solid fa-right-from-bracket" id="fas"></i>Logout</a>
-          </nav>
-
-
-
         </div>
       </div>
-
     </div>
-  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>

@@ -11,9 +11,10 @@
   color: white;
 }
 .btn.btn-primary {
-  background-color:		white;
-  border-color: white;
-  color: #93806c;
+  background-color:		#93806c;
+  border-color: #93806c;
+  color: white;
+  font-size: 20px;
 }
 .btn.btn-primary.justify-content-center:hover{
   background-color:		white;
@@ -56,6 +57,11 @@
   background-color:		#93806c;
   color:white;
   border-color: #93806c;
+}
+.btn.btn-outline-primary:hover{
+  background-color:		white !important;
+  color:#93806c !important;
+  border-color: white !important;
 }
 .email{
   color:grey;
@@ -226,7 +232,7 @@ text-decoration:none;
 	background-color: #93806c70;
   background-image: url("../family-2.png");
 	/* width: 1040px; */
-	min-height: 400px;
+	min-height: 350px;
   
 	background-repeat: no-repeat;
 	border: 2px solid #f4f4f4;
@@ -247,3 +253,44 @@ text-decoration:none;
 	font-size: 40px;
 }
 /*End of dashboard*/
+/*receipt*/
+.receipt-footer h1 {
+	padding-top: 50%;
+	font-size: 15px;
+	font-weight: 400 !important;
+	margin: 0 !important;
+}
+
+.receipt-main thead th {
+	color:#000000 ;
+	background-color: #bfb3a9;
+}
+.receipt-right h5 {
+	padding-top: 80px;
+	font-size: 16px;
+	font-weight: bold;
+	margin: 0 0 7px 0;
+}
+.receipt-right p {
+	font-size: 12px;
+	margin: 0px;
+}
+.receipt-right p i {
+	text-align: center;
+	width: 18px;
+}
+.receipt-header-mid .receipt-left h1 {
+	font-weight: 100;
+	margin: 34px 0 0;
+	text-align: right;
+	text-transform: uppercase;
+}
+.receipt-header-mid {
+	margin: 24px 0;
+	overflow: hidden;
+}
+
+.container {
+	background-color: white;
+}
+/* end of receipt*/

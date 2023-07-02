@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Receipt</title>
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+  <link th:href="@{stylesheets/main.css}" rel="stylesheet" type="text/css">
+  <script src="scripts.js"></script>
+  <link
+    rel="stylesheet"
+    th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css}"
+  />
+</head>
+<body style="height: 100vh; background-color: white;">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+    <a href="/payment-history-m"> <i class="bi bi-arrow-left-circle "style="padding-left: 20px; font-size: 30px; color: gray;"></i></a>
+
+<div class="container" style="max-width: 1200px;">
+	<div >
+		<div class="d-flex flex-row justify-content-center align-items-center g-0 card mt-3 container-fluid">
+		
+        <div class="receipt-main col-xs-5 col-sm-5 col-md-8 col-xs-offset-1 col-sm-offset-1 col-md-offset-1">
+            <div class="row">
+    			<div class="receipt-header">
+					<div class="col-xs-5 col-sm-5 col-md-5 text-right">
+						<div class="receipt-right">
+							<h5>Receipt ID : 1</h5>
+							<p>Member ID :</p>
+						</div>
+					</div>
+				</div>
+            </div>
+			
+			<div class="row">
+				<div class="receipt-header-left">
+					<div class="col-xs-8 col-sm-8 col-md-8 text-left">
+						<div class="receipt-right">
+							<h5>Nurin Jannah<small></h5>
+							<p><b>Email :</b> jannah@gmail.com</p>
+						</div>
+					</div>
+					<div class="col-xs-4 col-sm-6 col-md-4"><br><br><br><br><br><br>
+						<div class="receipt-left">
+							<h5>Date : 10-02-2023</h5>
+                            <h5>Time : 4:45 p.m. </h5>
+						</div>
+					</div>
+				</div>
+            </div>
+			
+            <div>
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Description</th>
+                            <th>Amount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="col-md-9">Package A</td>
+                            <td class="col-md-3"> RM 50 </td>
+                        </tr>
+                        
+                    
+                        <tr>
+                            <td class="text-right">
+                            <p>
+                                <strong>Total Amount: </strong>
+                            </p>
+                            
+							</td>
+                            <td>
+                            <p>
+                                <strong> RM 50 </strong>
+                            </p>
+                    
+							</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+            </div>
+			
+			<div class="row">
+				<div class="receipt-header receipt-header-mid receipt-footer">
+					<div class="col-xs-8 col-sm-8 col-md-8 text-left">
+						<div class="receipt-right">
+							<p><b>Terms & Conditions </p>
+							<h7 style="color: rgb(140, 140, 140);">Masjid has received the member's full payment</h7>
+						</div>
+					</div>
+					</div>
+				</div>
+            </div>
+			
+        </div>    
+	</div>
+</div>

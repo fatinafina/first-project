@@ -32,7 +32,7 @@ public class LoginController {
     @GetMapping("/")
     public String login(HttpSession session) {
         if (session.getAttribute("email") != null) {
-            return "redirect:/home";
+            return "redirect:/home-s";
         } else {
             System.out.println("Session expired or invalid...");
             return "login";
@@ -87,7 +87,7 @@ public class LoginController {
                         // session.setMaxInactiveInterval(1440 * 60);
 
                         System.out.println("Successfully logged in...");
-                        returnPage = "redirect:/home";
+                        returnPage = "redirect:/home-s";
                         break;
                     } else {
                         System.out.println("Email and password cannot find the database...");

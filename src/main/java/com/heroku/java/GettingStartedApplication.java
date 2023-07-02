@@ -26,31 +26,80 @@ public class GettingStartedApplication {
   public GettingStartedApplication(DataSource dataSource) {
     this.dataSource = dataSource;
   }
+   @GetMapping("/home")
+  String showHome(){
+    return "dashboard";
+  }
   @GetMapping("/contact-s")
-  String showContact(){
+  String showContactStaff(){
     return "contact-s";
   }
 
   @GetMapping("/about-us-s")
-  String showAboutUse(){
+  String showAboutUseStaff(){
     return "about-us-s";
   }
+  @GetMapping("/contact-m")
+  String showContactMember(){
+    return "contact-m";
+  }
 
+  @GetMapping("/about-us-m")
+  String showAboutUsMember(){
+    return "about-us-m";
+  }
    @GetMapping("/account-s")
   String showStaff(){
     return "account-s";
+  }
+    @GetMapping("/account-m")
+  String showMember(){
+    return "account-m";
   }
    @GetMapping("/create-staff")
   String createStaff(){
     return "create-staff";
   }
-     @GetMapping("/package-s")
+   @GetMapping("/create-package-s")
   String createPackage(){
+    return "create-package-s";
+  }
+    @GetMapping("/update-staff-s")
+  String updateStaff(){
+    return "update-staff-s";
+  }
+     @GetMapping("/package-s")
+  String showPackage(){
     return "package-s";
   }
   @GetMapping("/home-m")
   String homeMember(){
     return "dashboard-m";
+  }
+   @GetMapping("/payment-history-m")
+  String paymentHistory(){
+    return "payment-history-m";
+  }
+    @GetMapping("/make-payment-m")
+  String makePayment(){
+    return "make-payment-m";
+  }
+   @GetMapping("/view-payment-s")
+  String viewPayment(){
+    return "view-payment-s";
+  }
+    @GetMapping("/receipt")
+  String showReceipt(){
+    return "receipt";
+  }
+  
+  @GetMapping("/profile-m")
+  String showMemberProfile(){
+    return "profile-m";
+  }
+    @GetMapping("/update-package-s")
+  String updatePackage(){
+    return "update-package-s";
   }
   @GetMapping("/database")
   String database(Map<String, Object> model) {

@@ -47,13 +47,13 @@
           <!-- Left links -->
           <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="home-s">Home</a>
+              <a class="nav-link" aria-current="page" href="home-m">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="about-us">About Us</a>
+              <a class="nav-link" aria-current="page" href="about-us-m">About Us</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="contact">Contact</a>
+              <a class="nav-link" aria-current="page" href="contact-m">Contact</a>
             </li>
           
           </ul>
@@ -78,11 +78,11 @@
 
             <div class="container">					
                 <div class="section-title text-center">
-                    <p>Pricing Package</p>
+                    <h3>Pricing Package</h3>
                 </div>				
                 <div class="row text-center">									
                    
-                    <div class="col-lg-6 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0" style="visibility: visible; animation-duration: 1s; animation-delay: 0.2s; animation-name: fadeInUp;">
+                    <div class="col-lg-6 col-sm-6 col-xs-12 ">
                         <div class="pricing_design">
                             <div class="single-pricing">
                                 <div class="price-head">		
@@ -98,12 +98,31 @@
                                     <li> Tombstone</li>
                               
                                 </ul>
-                                <div class="pricing-price">
-                                    
-                                </div>
-                                <a href="#" class="price_btn">Join Now</a>
+                            
+                                <button type="button" class="btn btn-outline-primary mb-3"
+                                  data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                 Join Now</button>
+                            
                             </div>
                         </div>
+                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                        aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure?</h1>
+                                    <button type="button" class="btn-close"
+                                        data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">Do you really want to choose this package?</div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary"
+                                        data-bs-dismiss="modal">Cancel</button>
+                                    <button type="button" class="btn btn-primary" id="delete">Yes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     </div><!--- END COL -->	
                     <div class="col-lg-6 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
                         <div class="pricing_design">
@@ -123,13 +142,30 @@
                                     <li> Grave Marker</li>
                                     <li> Coffin Package</li>
                                 </ul>
-                                <div class="pricing-price">
-                                    
-                                </div>
-                                <a href="#" class="price_btn">Join Now</a>
-                            </div>
-                        </div>
-                    </div><!--- END COL -->			  
+                                <button type="button" class="btn btn-outline-primary mb-3"
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                               Join Now</button>
+                          
+                          </div>
+                      </div>
+                      <div class="modal fade" id="exampleModal" tabindex="-1"
+                      aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure?</h1>
+                                  <button type="button" class="btn-close"
+                                      data-bs-dismiss="modal" aria-label="Close"></button>
+                              </div>
+                              <div class="modal-body">Do you really want to choose this package?</div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-secondary"
+                                      data-bs-dismiss="modal">Cancel</button>
+                                  <button type="button" class="btn btn-primary" id="delete">Yes</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div><!--- END COL -->			  
                 </div><!--- END ROW -->
             </div><!--- END CONTAINER -->
       </div>
@@ -173,7 +209,7 @@
           
               <a
               class="nav-link d-flex flex-column justify-content-center align-items-center"
-              href="/payment-history-s"
+              href="/payment-history-m"
               ><i class="bi bi-credit-card"></i>Payment</a
             >
               <a

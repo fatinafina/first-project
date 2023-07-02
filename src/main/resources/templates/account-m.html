@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Member Details</title>
+ 
+    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}" rel="stylesheet"
+    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.2.0/css/bootstrap.min.css}">
+    <link rel="stylesheet" th:href="@{https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css}">
+    <script src="https://kit.fontawesome.com/5af8cda4e6.js" crossorigin="anonymous"></script>
+
+  <link href="stylesheets/main.css" rel="stylesheet" type="text/css">
+
+  <script defer src="https://code.jquery.com/jquery-3.5.1.js"></script>
+  <script defer src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script defer src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
+  <script defer src="stylesheets/script.js"></script>
+  <link
+  rel="stylesheet"
+  th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css}"
+/>
+    
+</head>
+<body style="height: 100vh; background-color: white;">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+    crossorigin="anonymous"></script>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <!-- Container wrapper -->
+  
+      <div class="container-fluid">
+        <button
+          class="btn btn-primary"
+          id="profile"
+          type="button"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#staticBackdrop"
+          aria-controls="staticBackdrop"
+        >
+          <img
+            src="girl.png"
+            class="rounded-circle img-fluid"
+            style="width: 40px; height: 40px"
+          />
+        </button>
+  
+        <!-- Collapsible wrapper -->
+        <div class="collapse navbar-collapse" id="navbarRightAlignExample">
+          <!-- Left links -->
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="home-s">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="about-us-s">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="contact-s">Contact</a>
+            </li>
+          </ul>
+          <!-- Left links -->
+        </div>
+        <!-- Collapsible wrapper -->
+      </div>
+      <!-- Container wrapper -->
+    </nav>
+  
+<div class="container pt-5">
+    <table id="example" class="table table-striped" style="width:100%">
+        <thead>
+            <tr>
+              <th> ID</th>
+                <th>Name</th>
+                <th>IC Number</th>
+                <th>Email</th>
+               
+               
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+              <td>#1</td>
+                <td>Siti Nur Sukirah</td>
+                <td>001210-12-0090</td>
+                <td>siti@gmail.com</td>
+                
+              
+            </tr>
+            <tr>
+              <td>#2</td>
+                <td>Fatin Faqihah</td>
+                <td>980102-02-1212</td>
+                <td>faq@gmail.com</td>
+                <td>Unpaid</td>
+        
+            </tr>
+            <tr>
+              <td>#3</td>
+                <td>Nur Adriana</td>
+                <td>991119-04-5112</td>
+                <td>addy@gmail.com</td>
+                <td>Paid</td>
+              
+            </tr>
+            <tr>
+              <td>#4</td>
+                <td>Nurin Jannah</td>
+                <td>920311-12-8909</td>
+                <td>jannah@gmail.com</td>
+                <td>Paid</td>
+            </tr>
+            
+        </tbody>
+    </table>
+</div>
+
+<div
+class="offcanvas offcanvas-start"
+data-bs-backdrop="static"
+tabindex="-1"
+id="staticBackdrop"
+aria-labelledby="staticBackdropLabel"
+>
+<div class="offcanvas-header" style="background-color: #93806c70">
+  <h5 class="offcanvas-title" id="staticBackdropLabel"></h5>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="offcanvas"
+    aria-label="Close"
+  ></button>
+</div>
+<div class="offcanvas-body" style="background-color: #93806c70">
+  <div>
+    <div class="offcanvas-body">
+      <div
+        class="profile d-flex flex-column justify-content-center align-items-center"
+      >
+        <img src="girl.png" alt="girl" width="70" height="70" /><br />
+        <h4 class="mb-2">FATIN AFINA</h4>
+        <p class="text-muted mb-4"> <span class="mx-2" th:text="${session.role}"></span>| 
+          <a class="email" th:text="${session.email}"></a></p>
+        
+      </div>
+      <hr class="my-4" />
+      <nav class="nav flex-column">
+      
+        <a
+          class="nav-link d-flex flex-column justify-content-center align-items-center"
+          href="profile-s"
+          ><i class="bi bi-person fa-lg"></i>Profile</a
+        >
+        <a
+        class="nav-link d-flex flex-column justify-content-center align-items-center"
+        href="/account-s"
+        ><i class="bi bi-person-badge fa-lg"></i>Staff</a
+      >
+        <a
+          class="nav-link d-flex flex-column justify-content-center align-items-center"
+          href="/account-m"
+          ><i class="bi bi-person-check fa-lg"></i>Member</a
+        >
+        <a
+        class="nav-link d-flex flex-column justify-content-center align-items-center"
+        href="/package-s"
+        ><i class="bi bi-boxes fa-lg"></i>Package</a
+      >
+      <a
+      class="nav-link d-flex flex-column justify-content-center align-items-center"
+      href="/view-payment-s"
+      ><i class="bi bi-credit-card"></i>Payment</a
+    >
+        <a
+          class="nav-link d-flex flex-column justify-content-center align-items-center"
+          href="/logout"
+          ><i class="bi bi-box-arrow-left fa-lg"></i>Logout</a
+        >
+      </nav>
+    </div>
+  </div>
+</div>
+</div>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+    crossorigin="anonymous"></script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+    integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+    crossorigin="anonymous"></script>
+  
+    
+</body>
+</html>
