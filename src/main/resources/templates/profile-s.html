@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
 
+<html xmlns:th="https://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -67,9 +67,9 @@
               <img src="girl.png" class="rounded-circle img-fluid" style="width: 100px;" />
             </div>
 
-            <h4 class="mb-2"> FATIN AFINA</h4>
+            <h4 class="mb-2" th:text="${account.name}"></h4>
             <p class="text-muted mb-4">@Manager <span class="mx-2">|</span> <a class="email"
-                href="#!">atnpina@gmail.com</a></p>
+                href="#!" th:text="${account.email}"></a></p>
             </div>
 
 
@@ -81,7 +81,7 @@
          
           <h3 class="mb-2">Personal Information</h3>
           <hr class="my-4" style="background-color: #93806c;">
-          <form th:action="@{/update-account?userid=1}"
+          <form th:action="@{/update-account?userid=}+${account.userid}"
           th:object="${account}"
           method="post"
           modelAttribute="profileAcc">

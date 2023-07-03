@@ -37,8 +37,8 @@ public class AccountController {
       Connection connection = dataSource.getConnection();
       String sql = "SELECT * FROM khairatuser where userid=?";
       var statement = connection.prepareStatement(sql);
-      int id = 1;
-      statement.setInt(1, id);
+      // int id = 1;
+      statement.setInt(1, 2);
       final var resultSet = statement.executeQuery();
 
       while (resultSet.next()) {
@@ -48,7 +48,7 @@ public class AccountController {
         String email = resultSet.getString("email");
         String password = resultSet.getString("password");
         String roles = resultSet.getString("role");
-        System.out.println(">>>> " + name);
+        System.out.println(">>>> " + name + ">>>" + ic + ">>>" + email + password);
         model.addAttribute("account", new Users(userid, name, ic, email, password));
       }
 
@@ -75,6 +75,7 @@ public class AccountController {
       pstatement.setInt(5, id);
 
       pstatement.executeUpdate();
+      System.out.println(">>>>>>>" + users.getEmail());
 
       connection.close();
 
