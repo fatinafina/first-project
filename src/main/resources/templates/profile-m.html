@@ -61,9 +61,9 @@
                 <img src="girl (1).png" class="rounded-circle img-fluid" style="width: 100px;" />
               </div>
 
-              <h4 class="mb-2">NURIN JANNAH</h4>
-              <p class="text-muted mb-4">@Member <span class="mx-2">|</span> <a class="email"
-                  href="#!">jannah@gmail.com</a></p>
+              <h4 class="mb-2" th:text="${account.name}"></h4>
+              <p class="text-muted mb-4">@Member <span class="mx-2">|</span>  <a class="email"
+                href="#!" th:text="${account.email}"></a></p>
               
             </div>
 
@@ -73,78 +73,78 @@
       </div>
       <div class="card" style="border-radius: 15px; border-color: #93806c;">
         <div class="card-body p-4">
-          <form >
-            <h3 class="mb-2">Personal Information</h3>
-            <hr class="my-4" style="background-color: #93806c;">
-            <div class="card mb-4">
-              <div class="card-body" style="border-color: #93806c; ">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Name</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <input type="text" name="name" class="register" th:value="name">
-                  </div>
+          <form th:action="@{/update-account-m?userid=}+${account.userid}"
+          th:object="${account}"
+          method="post"
+          modelAttribute="profileAcc">
+          <div class="card mb-4">
+            <div class="card-body" style="border-color: #93806c; ">
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Name</p>
                 </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">IC Number</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <input type="text" name="ic" class="register" th:value="ic">
-                  </div>
+                <div class="col-sm-9">
+                  <input name="name" type="text" class="register" th:value="${account.name}" style="width: 100%;">
                 </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Email</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <input type="text" name="email" class="register" th:value="email">
-                  </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">IC Number</p>
                 </div>
-                <hr>
-                <div class="row">
-                  <div class="col-sm-3">
-                    <p class="mb-0">Password</p>
-                  </div>
-                  <div class="col-sm-9">
-                    <input type="password" name="password" class="register" th:value="password">
-                  </div>
+                <div class="col-sm-9">
+                  <input name="ic" type="text" class="register" th:value="${account.ic}">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Email</p>
+                </div>
+                <div class="col-sm-9">
+                  <input name="email" type="text" class="register" th:value="${account.email}">
+                </div>
+              </div>
+              <hr>
+              <div class="row">
+                <div class="col-sm-3">
+                  <p class="mb-0">Password</p>
+                </div>
+                <div class="col-sm-9">
+                 <input name="password" type="password" class="register" th:value="${account.password}">
                 </div>
               </div>
             </div>
-            <div class="mt-5 text-center"><button class="btn btn-primary profile-button" type="submit">Save
-                Profile</button>
-              
-            </div>
-            <div class="delete d-flex justify-content-end">
+            <div class="mt-5 text-center">
+              <button class="btn btn-primary profile-button" type="submit">Save
+                Profile
+              </button>
+              <div class="delete d-flex justify-content-end">
               <button type="button" class="btn btn-outline-primary mb-3"
-              data-bs-toggle="modal" data-bs-target="#exampleModal">
-              <i class="bi bi-trash3 fa-sm"></i></button>
-              <div class="modal fade" id="exampleModal" tabindex="-1"
-              aria-labelledby="exampleModalLabel" aria-hidden="true">
-              <div class="modal-dialog">
-                  <div class="modal-content">
-                      <div class="modal-header">
-                          <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure?</h1>
-                          <button type="button" class="btn-close"
-                              data-bs-dismiss="modal" aria-label="Close"></button>
-                      </div>
-                      <div class="modal-body">Do you really want to delete this record? This process cannot be undone</div>
-                      <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary"
-                              data-bs-dismiss="modal">Cancel</button>
-                          <button type="button" class="btn btn-primary" id="delete">Delete</button>
-                      </div>
-                  </div>
-              </div>
-          </div>
-              
-            </div>
-           
-          </form>
+                                data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                <i class="bi bi-trash3 fa-sm"></i></button>
+                                <div class="modal fade" id="exampleModal" tabindex="-1"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure?</h1>
+                                            <button type="button" class="btn-close"
+                                                data-bs-dismiss="modal" aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">Do you really want to delete this record? This process cannot be undone</div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                            <button type="button" class="btn btn-primary" id="delete">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+        </div>
+
+   
+        </form>
         </div>
       </div>
     </div>

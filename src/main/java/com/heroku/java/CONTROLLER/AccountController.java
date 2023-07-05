@@ -59,6 +59,7 @@ public class AccountController {
     }
 
   }
+  
 
   @PostMapping("/update-account")
   public String updateAccount(@ModelAttribute("profileAcc") Users users,
@@ -80,6 +81,33 @@ public class AccountController {
       connection.close();
 
       return "redirect:/profile-s";
+
+    } catch (Throwable t) {
+      System.out.println("message" + t.getMessage());
+      return "error";
+    }
+  }
+
+  @PostMapping("/update-account-m")
+  public String updateAccountM(@ModelAttribute("profileAcc") Users users,
+      @RequestParam(name = "userid") int id) {
+    System.out.println("id:" + id);
+    try (Connection connection = dataSource.getConnection()) {
+      String sql = "UPDATE khairatuser SET name=?, ic=?, email=?, password=? WHERE userid=?";
+      var pstatement = connection.prepareStatement(sql);
+      System.out.println(users.getName());
+      pstatement.setString(1, users.getName());
+      pstatement.setString(2, users.getIc());
+      pstatement.setString(3, users.getEmail());
+      pstatement.setString(4, users.getPassword());
+      pstatement.setInt(5, id);
+
+      pstatement.executeUpdate();
+      System.out.println(">>>>>>>" + users.getEmail());
+
+      connection.close();
+
+      return "redirect:/profile-m";
 
     } catch (Throwable t) {
       System.out.println("message" + t.getMessage());

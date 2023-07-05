@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import com.heroku.java.MODEL.Users;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -26,81 +29,121 @@ public class GettingStartedApplication {
   public GettingStartedApplication(DataSource dataSource) {
     this.dataSource = dataSource;
   }
-   @GetMapping("/home")
-  String showHome(){
+
+  @GetMapping("/home")
+  String showHome() {
     return "dashboard";
   }
+
   @GetMapping("/contact-s")
-  String showContactStaff(){
+  String showContactStaff() {
     return "contact-s";
   }
 
   @GetMapping("/about-us-s")
-  String showAboutUseStaff(){
+  String showAboutUseStaff() {
     return "about-us-s";
   }
+
   @GetMapping("/contact-m")
-  String showContactMember(){
+  String showContactMember() {
     return "contact-m";
   }
 
   @GetMapping("/about-us-m")
-  String showAboutUsMember(){
+  String showAboutUsMember() {
     return "about-us-m";
   }
-   @GetMapping("/account-s")
-  String showStaff(){
+
+  @GetMapping("/account-s")
+  String showStaff() {
     return "account-s";
   }
-    @GetMapping("/account-m")
-  String showMember(){
+
+  @GetMapping("/account-m")
+  String showMember() {
     return "account-m";
   }
-   @GetMapping("/create-staff")
-  String createStaff(){
+
+  @GetMapping("/create-staff")
+  String createStaff() {
     return "create-staff";
   }
-   @GetMapping("/create-package-s")
-  String createPackage(){
+
+  @GetMapping("/create-package-s")
+  String createPackage() {
     return "create-package-s";
   }
-    @GetMapping("/update-staff-s")
-  String updateStaff(){
+
+  @GetMapping("/update-staff-s")
+  String updateStaff() {
     return "update-staff-s";
   }
-     @GetMapping("/package-s")
-  String showPackage(){
+
+  @GetMapping("/package-s")
+  String showPackage() {
     return "package-s";
   }
+
   @GetMapping("/home-m")
-  String homeMember(){
+  String homeMember() {
     return "dashboard-m";
   }
-   @GetMapping("/payment-history-m")
-  String paymentHistory(){
+
+  @GetMapping("/payment-history-m")
+  String paymentHistory() {
     return "payment-history-m";
   }
-    @GetMapping("/make-payment-m")
-  String makePayment(){
+
+  @GetMapping("/make-payment-m")
+  String makePayment() {
     return "make-payment-m";
   }
-   @GetMapping("/view-payment-s")
-  String viewPayment(){
+
+  @GetMapping("/view-payment-s")
+  String viewPayment() {
     return "view-payment-s";
   }
-    @GetMapping("/receipt")
-  String showReceipt(){
+
+  @GetMapping("/receipt")
+  String showReceipt() {
     return "receipt";
   }
-  
+
   @GetMapping("/profile-m")
-  String showMemberProfile(){
-    return "profile-m";
+  String showMemberProfile(Model model) {
+    try {
+      Connection connection = dataSource.getConnection();
+      String sql = "SELECT * FROM khairatuser where userid=?";
+      var statement = connection.prepareStatement(sql);
+      // int id = 1;
+      statement.setInt(1, 2);
+      final var resultSet = statement.executeQuery();
+
+      while (resultSet.next()) {
+        int userid = resultSet.getInt("userid");
+        String name = resultSet.getString("name");
+        String ic = resultSet.getString("ic");
+        String email = resultSet.getString("email");
+        String password = resultSet.getString("password");
+        String roles = resultSet.getString("role");
+        System.out.println(">>>> " + name + ">>>" + ic + ">>>" + email + password);
+        model.addAttribute("account", new Users(userid, name, ic, email, password));
+      }
+
+      return "profile-m";
+    } catch (Exception e) {
+      System.out.println(e.getMessage());
+      return "error";
+    }
+
   }
-    @GetMapping("/update-package-s")
-  String updatePackage(){
+
+  @GetMapping("/update-package-s")
+  String updatePackage() {
     return "update-package-s";
   }
+
   @GetMapping("/database")
   String database(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
