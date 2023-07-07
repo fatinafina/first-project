@@ -85,7 +85,8 @@
                               <td th:text="${user.name}"></td>
                               <td th:text="${user.ic}"></td>
                               <td th:text="${user.email}"></td>
-                              <td><span class="badge bg-success">Manager</span></td>
+                              <td><span class="badge bg-light text-dark">Staff</span></td>
+                              <!-- <td><span class="badge bg-success">Manager</span></td> -->
                               <td>
                                 <a th:href="@{/update-staff?userid=} + ${user.userid}"><i class="bi bi-pencil-square" style="color: #93806c; font-size: 30px;"></i></a>
                                </td>
@@ -111,7 +112,7 @@
                                 </div>
                             </div>
                           </tr>
-                          <tr>
+                          <!-- <tr>
                               <td>#2</td>
                               <td>Izzatul Yaasha</td>
                               <td>011027-02-0010</td>
@@ -141,7 +142,7 @@
                                     </div>
                                 </div>
                             </div>
-                          </tr>
+                          </tr> -->
                          
                       </tbody>
                   </table>
