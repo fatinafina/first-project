@@ -6,6 +6,7 @@ public class Users {
     private String ic;
     private String email;
     private String password;
+    private String confirm_password;
 
     public Users(int userid, String name, String ic, String email, String password) {
         this.userid = userid;
@@ -19,6 +20,14 @@ public class Users {
       
     }
     
+    
+    public Users(int userid, String name, String ic, String email) {
+        this.userid = userid;
+        this.name = name;
+        this.ic = ic;
+        this.email = email;
+    }
+
     public String getName() {
         return name;
     }
@@ -48,6 +57,14 @@ public class Users {
     }
     public void setUserid(int userid) {
         this.userid = userid;
+    }
+
+    public String getConfirm_password() {
+      return confirm_password;
+    }
+
+    public void setConfirm_password(String confirm_password) {
+      this.confirm_password = confirm_password;
     }
 
     

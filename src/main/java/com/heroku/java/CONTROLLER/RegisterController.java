@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.heroku.java.MODEL.Users;
+import com.heroku.java.SERVICES.AccountServices;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -20,41 +21,29 @@ import java.util.Map;
 @Controller
 public class RegisterController {
 
-    private final DataSource dataSource;
+  private final DataSource dataSource;
+  private AccountServices accountServices;
 
-    @Autowired
-    public RegisterController(DataSource dataSource) {
-        this.dataSource = dataSource;
+  @Autowired
+  public RegisterController(DataSource dataSource, AccountServices accountServices) {
+    this.dataSource = dataSource;
+    this.accountServices = accountServices;
+  }
+
+  @GetMapping("/register")
+  public String signUp() {
+    return "register";
+  }
+
+  @PostMapping("/create-account")
+  public String createAccount(@ModelAttribute("user") Users users) {
+
+    boolean status = accountServices.createAccountMember(users);
+
+    if(status){
+      return "redirect:/";
+    }else{
+      return "redirect:/register";
     }
-
-    @GetMapping("/register")
-    public String signUp() {
-        return "register";
-    }
-
-    @PostMapping("/create-account")
-    public String createAccount(@ModelAttribute("user") Users users) {
-
-        try (Connection connection = dataSource.getConnection()) {
-            var prepareStatement = connection.prepareStatement("INSERT INTO khairatuser (name, ic, email, password) VALUES (?,?,?,?)");
-
-            // String name = users.getName();
-            // String ic = users.getIc();
-            // String email = users.getEmail();
-            // String password = users.getPassword();
-
-            prepareStatement.setString(1, users.getName());
-            prepareStatement.setString(2, users.getIc());
-            prepareStatement.setString(3, users.getEmail());
-            prepareStatement.setString(4, users.getPassword());
-            prepareStatement.executeUpdate();
-            connection.close();
-            
-            return "redirect:/";
-
-        } catch (Throwable t) {
-            System.out.println("message" + t.getMessage());
-            return "error";
-        }
-    }
+  }
 }

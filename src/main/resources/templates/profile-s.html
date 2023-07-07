@@ -81,7 +81,7 @@
          
           <h3 class="mb-2">Personal Information</h3>
           <hr class="my-4" style="background-color: #93806c;">
-          <form th:action="@{/update-account?userid=}+${account.userid}"
+          <form th:action="@{/update-account-s?userid=}+${account.userid}"
           th:object="${account}"
           method="post"
           modelAttribute="profileAcc">

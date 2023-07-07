@@ -70,7 +70,7 @@
                   <table class="table mb-0">
                       <thead>
                           <tr>
-                              <th class="border-gray-200" scope="col">ID</th>
+                              <th class="border-gray-200" scope="col">No</th>
                               <th class="border-gray-200" scope="col">Name</th>
                               <th class="border-gray-200" scope="col">Ic Number </th>
                               <th class="border-gray-200" scope="col">Email</th>
@@ -80,14 +80,14 @@
                           </tr>
                       </thead>
                       <tbody>
-                          <tr>
-                              <td>#1</td>
-                              <td>Fatin Afina</td>
-                              <td>020722-02-0202</td>
-                              <td>atnpina@gmail.com</td>
+                          <tr th:each="user, iterStat  : ${users}">
+                              <td th:text="${iterStat.index + 1}">#</td>
+                              <td th:text="${user.name}"></td>
+                              <td th:text="${user.ic}"></td>
+                              <td th:text="${user.email}"></td>
                               <td><span class="badge bg-success">Manager</span></td>
                               <td>
-                                <a href="/update-staff-s"><i class="bi bi-pencil-square" style="color: #93806c; font-size: 30px;"></i></a>
+                                <a th:href="@{/update-staff?userid=} + ${user.userid}"><i class="bi bi-pencil-square" style="color: #93806c; font-size: 30px;"></i></a>
                                </td>
                                <th><button type="button" class="btn btn-outline-primary mb-3"
                                 data-bs-toggle="modal" data-bs-target="#exampleModal">

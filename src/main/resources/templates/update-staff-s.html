@@ -22,7 +22,7 @@
    
     <div class="container">
         <div class="card">
-            <form>
+            <form th:action="@{/update-staff}" ModelAttribute="updateStaff" th:object="${users}" method="post">
             <div class="form">
                 <div class="left-side">
                     <div class="left-heading">
@@ -40,34 +40,35 @@
                         <div class="input-text">
                             <div class="input-div">
                                 <span>Name</span>
-                                <input name="name" type="text" class="register" th:value="name">
+                                <input name="name" type="text" class="register" th:value="${users.name}" required>
+                                <input name="userid" type="text" class="register" th:value="${users.userid}" hidden>
                                 
                             </div>
                             <div class="input-div">
                                 <span>IC Number</span>
-                                <input name="ic" type="text" class="register" th:value="ic">
+                                <input name="ic" type="text" class="register" th:value="${users.ic}" required>
                                
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-div">
                                 <span>Email</span>
-                                <input name="email" type="text" class="register" th:value="email">
+                                <input name="email" type="text" class="register" th:value="${users.email}" required>
                                 
                             </div>
                             <div class="input-div">
                                 <span>Password</span>
-                                <input name="password" type="password" class="register" th:value="password">
+                                <input name="password" type="password" class="register" th:value="${users.password}"  minlength="8" required>
                                
                             </div>
                         </div>
-                        <div class="input-text">
+                        <!-- <div class="input-text">
                                 <label for="inputState">Role</label>
                                 <select id="inputState" class="form-control">
                                   <option selected>Staff</option>
                                   <option>Manager</option>
                                 </select>
-                        </div>
+                        </div> -->
                     
                         <div class="buttons">
                             <button type="submit" class="next_button">Update</button>

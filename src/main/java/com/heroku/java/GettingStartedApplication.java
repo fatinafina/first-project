@@ -3,11 +3,15 @@ package com.heroku.java;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import com.heroku.java.MODEL.Users;
+import com.heroku.java.SERVICES.AccountServices;
 
 import jakarta.servlet.http.HttpSession;
 
@@ -55,11 +59,6 @@ public class GettingStartedApplication {
     return "about-us-m";
   }
 
-  @GetMapping("/account-s")
-  String showStaff() {
-    return "account-s";
-  }
-
   @GetMapping("/account-m")
   String showMember() {
     return "account-m";
@@ -75,19 +74,9 @@ public class GettingStartedApplication {
     return "create-package-s";
   }
 
-  @GetMapping("/update-staff-s")
-  String updateStaff() {
-    return "update-staff-s";
-  }
-
   @GetMapping("/package-s")
   String showPackage() {
     return "package-s";
-  }
-
-  @GetMapping("/home-m")
-  String homeMember() {
-    return "dashboard-m";
   }
 
   @GetMapping("/payment-history-m")
@@ -110,34 +99,7 @@ public class GettingStartedApplication {
     return "receipt";
   }
 
-  @GetMapping("/profile-m")
-  String showMemberProfile(Model model) {
-    try {
-      Connection connection = dataSource.getConnection();
-      String sql = "SELECT * FROM khairatuser where userid=?";
-      var statement = connection.prepareStatement(sql);
-      // int id = 1;
-      statement.setInt(1, 2);
-      final var resultSet = statement.executeQuery();
-
-      while (resultSet.next()) {
-        int userid = resultSet.getInt("userid");
-        String name = resultSet.getString("name");
-        String ic = resultSet.getString("ic");
-        String email = resultSet.getString("email");
-        String password = resultSet.getString("password");
-        String roles = resultSet.getString("role");
-        System.out.println(">>>> " + name + ">>>" + ic + ">>>" + email + password);
-        model.addAttribute("account", new Users(userid, name, ic, email, password));
-      }
-
-      return "profile-m";
-    } catch (Exception e) {
-      System.out.println(e.getMessage());
-      return "error";
-    }
-
-  }
+ 
 
   @GetMapping("/update-package-s")
   String updatePackage() {
@@ -169,6 +131,11 @@ public class GettingStartedApplication {
   @GetMapping("/error")
   String index() {
     return "error";
+  }
+
+  @Bean
+  public BCryptPasswordEncoder bCryptPasswordEncoder() {
+    return new BCryptPasswordEncoder();
   }
 
   public static void main(String[] args) {
