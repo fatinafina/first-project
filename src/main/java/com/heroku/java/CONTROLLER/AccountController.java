@@ -91,15 +91,23 @@ public class AccountController {
   @GetMapping("/account-s")
   String showStaff(Model model, HttpSession session) {
 
-    if (accountServices.checkSession(session)) {
+    // if (accountServices.checkSession(session)) {
       ArrayList<Users> users = new ArrayList<>();
       users = accountServices.getAllStaff();
       model.addAttribute("users", users);
 
       return "account-s";
-    } else {
-      return "redirect:/";
-    }
+    // } else {
+    //   return "redirect:/";
+    // }
+  }
+
+  @GetMapping("/account-m")
+  String showMember(Model model, HttpSession session) {
+    ArrayList<Users> users = new ArrayList<>();
+    users = accountServices.getAllMember();
+    model.addAttribute("users", users);
+    return "account-m";
   }
 
   @GetMapping("/update-staff")
@@ -117,11 +125,33 @@ public class AccountController {
     }
   }
 
+  @GetMapping("/update-member")
+  String displayOneMember(@RequestParam(value = "userid") int userid, Model model, HttpSession session) {
+    // System.out.println(userid);
+    // if (accountServices.checkSession(session)) {
+    Users users = new Users();
+    users.setUserid(userid);
+    System.out.println(users.getPassword());
+    users = accountServices.getUserInformation(users);
+    model.addAttribute("users", users);
+    return "update-member-m";
+    // } else {
+    // return "redirect:/";
+    // }
+  }
+
   @PostMapping("/update-staff")
   String updateStaff(Model model, @ModelAttribute("updateStaff") Users users) {
     boolean status = accountServices.updateUsers(users);
     System.out.println("Update staff status : " + status);
     return "redirect:/account-s";
+  }
+
+  @PostMapping("/update-member")
+  String updateMember(Model model, @ModelAttribute("updateMember") Users users) {
+    boolean status = accountServices.updateUsers(users);
+    System.out.println("Update member status : " + status);
+    return "redirect:/account-m";
   }
 
   @PostMapping("/update-account-s")
@@ -143,6 +173,22 @@ public class AccountController {
     boolean status = accountServices.updateUsers(users);
     System.out.println("Update profile member status : " + status);
     return "redirect:/profile-m";
+  }
+
+  @PostMapping("/delete-member")
+  public String deleteAccountMember(@ModelAttribute("deleteMember") Users users) {
+    System.out.println("member id : " +users.getUserid());
+    boolean status = accountServices.deleteUsers(users);
+    System.out.println("status delete : " +  status);
+    return "redirect:/account-m";
+  }
+
+   @PostMapping("/delete-staff")
+  public String deleteAccountStaff(@ModelAttribute("deleteStaff") Users users) {
+    System.out.println("staff id : " + users.getUserid());
+    boolean status = accountServices.deleteUsers(users);
+    System.out.println("status delete : " +  status);
+    return "redirect:/account-s";
   }
 
 }

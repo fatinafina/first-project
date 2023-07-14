@@ -59,24 +59,10 @@ public class GettingStartedApplication {
     return "about-us-m";
   }
 
-  @GetMapping("/account-m")
-  String showMember() {
-    return "account-m";
-  }
 
   @GetMapping("/create-staff")
   String createStaff() {
     return "create-staff";
-  }
-
-  @GetMapping("/create-package-s")
-  String createPackage() {
-    return "create-package-s";
-  }
-
-  @GetMapping("/package-s")
-  String showPackage() {
-    return "package-s";
   }
 
   @GetMapping("/payment-history-m")
@@ -97,13 +83,6 @@ public class GettingStartedApplication {
   @GetMapping("/receipt")
   String showReceipt() {
     return "receipt";
-  }
-
- 
-
-  @GetMapping("/update-package-s")
-  String updatePackage() {
-    return "update-package-s";
   }
 
   @GetMapping("/database")

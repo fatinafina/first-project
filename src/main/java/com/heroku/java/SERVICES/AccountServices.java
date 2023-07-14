@@ -1,6 +1,7 @@
 package com.heroku.java.SERVICES;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -38,9 +39,11 @@ public class AccountServices {
   private final String INSERT_USER_STAFF = "INSERT INTO khairatuser (name, ic, email,password) VALUES (?,?,?,?) RETURNING userid AS userid;";
   private final String INSERT_STAFF = "INSERT INTO staff (userid, managerid) VALUES (?,?);";
   private final String SELECT_ALL_STAFF = "SELECT khairatuser.userid, name, ic, email, password FROM khairatuser JOIN staff ON (khairatuser.userid = staff.userid) ORDER BY userid;";
+  private final String SELECT_ALL_MEMBER = "SELECT khairatuser.userid, name, ic, email, password FROM khairatuser JOIN member ON (khairatuser.userid = member.userid) ORDER BY khairatuser.userid;";
   private final String SELECT_USER_ID = "SELECT * FROM khairatuser WHERE userid=?;";
   private final String UPDATE_STAFF_ID = "UPDATE khairatuser SET name=?, ic=?, email=?, password=? WHERE userid=?;";
   private final String UPDATE_STAFF_ID_noPass = "UPDATE khairatuser SET name=?, ic=?, email=? WHERE userid=?;";
+  private final String DELETE_USER_ID = "DELETE FROM khairatuser WHERE userid=?";
 
   public boolean checkSession(HttpSession session) {
     boolean status = false;
@@ -120,18 +123,27 @@ public class AccountServices {
     boolean status = false;
     try (Connection connection = dataSource.getConnection()) {
       var prepareStatement = connection
-          .prepareStatement("INSERT INTO khairatuser (name, ic, email, password) VALUES (?,?,?,?)");
-
-      // String name = users.getName();
-      // String ic = users.getIc();
-      // String email = users.getEmail();
-      // String password = users.getPassword();
+          .prepareStatement("INSERT INTO khairatuser (name, ic, email, password) VALUES (?,?,?,?) RETURNING userid");
 
       prepareStatement.setString(1, users.getName());
       prepareStatement.setString(2, users.getIc());
       prepareStatement.setString(3, users.getEmail());
       prepareStatement.setString(4, passwordEncoder.encode(users.getPassword()));
-      prepareStatement.executeUpdate();
+      
+      ResultSet parentResultSet = prepareStatement.executeQuery();
+      if (parentResultSet.next()) {
+        long parentId = parentResultSet.getLong("userid");
+
+        String childInsertSql = "INSERT INTO member (userid) VALUES (?)";
+        PreparedStatement childInsertStatement = connection.prepareStatement(childInsertSql);
+        childInsertStatement.setLong(1, parentId);
+        childInsertStatement.executeUpdate();
+
+        childInsertStatement.close();
+      }
+
+      parentResultSet.close();
+
       connection.close();
 
       status = true;
@@ -214,6 +226,31 @@ public class AccountServices {
     return users;
   }
 
+  public ArrayList<Users> getAllMember() {
+    ArrayList<Users> users = new ArrayList<>();
+
+    try (Connection connection = dataSource.getConnection()) {
+      final var prepareStatement = connection.prepareStatement(SELECT_ALL_MEMBER);
+      ResultSet rs = prepareStatement.executeQuery();
+
+      while (rs.next()) {
+        int userid = rs.getInt("userid");
+        String name = rs.getString("name");
+        String ic = rs.getString("ic");
+        String email = rs.getString("email");
+
+        users.add(new Users(userid, name, ic, email));
+      }
+      connection.close();
+
+    } catch (SQLException ex) {
+      // return status;
+      database.printSQLException(ex);
+    }
+
+    return users;
+  }
+
   public Users getUserInformation(Users users) {
     Users usr = null;
 
@@ -273,6 +310,29 @@ public class AccountServices {
     } catch (SQLException ex) {
       // return status;
       database.printSQLException(ex);
+    }
+
+    return status;
+  }
+
+  public boolean deleteUsers(Users users) {
+    boolean status = false;
+
+    try (Connection connection = dataSource.getConnection()) {
+
+      if (users.getUserid() != 1) {
+        final var prepareStatement = connection.prepareStatement(DELETE_USER_ID);
+        prepareStatement.setInt(1, users.getUserid());
+
+        prepareStatement.executeQuery();
+        status = true;
+        connection.close();
+      }
+
+    } catch (SQLException ex) {
+      // return status;
+      database.printSQLException(ex);
+      status = true;
     }
 
     return status;

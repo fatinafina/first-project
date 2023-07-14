@@ -1,117 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Update Package</title>
-    <link th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}" rel="stylesheet"
-    integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <link th:href="@{stylesheets/main.css}" rel="stylesheet" type="text/css">
-  <script src="scripts.js"></script>
-  <script src="https://kit.fontawesome.com/5af8cda4e6.js" crossorigin="anonymous"></script>
-  <link
-  rel="stylesheet"
-  th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css}"
-/>
-</head>
-<body style="height: 100vh; background-color: white;">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
-    crossorigin="anonymous"></script>
-    <a href="/package-s"> <i class="bi bi-arrow-left-circle "style="padding-left: 20px; font-size: 30px; color: gray;"></i></a>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link
+      th:href="@{https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css}"
+      rel="stylesheet"
+      integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM"
+      crossorigin="anonymous"
+    />
+    <link th:href="@{stylesheets/main.css}" rel="stylesheet" type="text/css" />
+    <script src="scripts.js"></script>
+    <script
+      src="https://kit.fontawesome.com/5af8cda4e6.js"
+      crossorigin="anonymous"
+    ></script>
+    <link
+      rel="stylesheet"
+      th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css}"
+    />
+  </head>
+  <body style="height: 100vh; background-color: white">
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+      crossorigin="anonymous"
+    ></script>
+    <a href="/package-s">
+      <i
+        class="bi bi-arrow-left-circle"
+        style="padding-left: 20px; font-size: 30px; color: gray"
+      ></i
+    ></a>
 
-   
-    <section class="vh-100" style="height: 100vh; background-color: white !important;">
+    <section
+      class="vh-100"
+      style="height: 100vh; background-color: white !important"
+    >
       <div class="container h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
           <div class="col-lg-12 col-xl-11">
-            <div class="card text-black" style="border-radius: 25px;">
+            <div class="card text-black" style="border-radius: 25px">
               <div class="card-body p-md-5">
                 <div class="row justify-content-center">
                   <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-    
-                    <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">Package Details</p>
-    
-                    <form class="mx-1 mx-md-4">
-    
+                    <p class="text-center h3 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                      Package Details
+                    </p>
+
+                    <form
+                      th:action="@{/update-package-s?pid=} + ${packages.packageid}"
+                      ModelAttribute="updatePackage"
+                      th:object="${packages}"
+                      method="post"
+                      class="mx-1 mx-md-4"
+                    >
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
-                          <label class="form-label" for="form3Example1c">Package Name</label>
-                          <input type="text" id="form3Example1c" class="packageName" th:value="classic"/>
+                          <label class="form-label" for="form3Example1c"
+                            >Package Name</label
+                          >
+                          <input
+                            type="text"
+                            name="name"
+                            id="form3Example1c"
+                            class="packageName"
+                            th:value="${packages.name}"
+                          />
                         </div>
                       </div>
-    
+
                       <span>Item Name</span>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                  <label class="form-check-label" for="gridCheck1">
-                                    Shroud
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                  <label class="form-check-label" for="gridCheck1">
-                                    Hearse
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                  <label class="form-check-label" for="gridCheck1">
-                                    Funeral prayer
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                  <label class="form-check-label" for="gridCheck1">
-                                    Digger's Wages
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                  <label class="form-check-label" for="gridCheck1">
-                                    Tombstone
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                  <label class="form-check-label" for="gridCheck1">
-                                    Tahlil & Yaasin
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                  <label class="form-check-label" for="gridCheck1">
-                                    Grave Marker
-                                  </label>
-                                </div>
-                                <div class="form-check">
-                                  <input class="form-check-input" type="checkbox" id="gridCheck1">
-                                  <label class="form-check-label" for="gridCheck1">
-                                    Coffin Package
-                                  </label>
-                                </div><br>
-    
+                      <div class="form-check">
+                        <input
+                          name="itemCheckbox"
+                          class="form-check-input"
+                          type="checkbox"
+                          id="gridCheck1"
+                          value="1"
+                          th:checked="${items.contains(1)}"
+                        />
+                        <label class="form-check-label" for="gridCheck1">
+                          Shroud
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          name="itemCheckbox"
+                          class="form-check-input"
+                          type="checkbox"
+                          id="gridCheck1"
+                          value="2"
+                          th:checked="${items.contains(2)}"
+                        />
+                        <label class="form-check-label" for="gridCheck1">
+                          Hearse
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          name="itemCheckbox"
+                          class="form-check-input"
+                          type="checkbox"
+                          id="gridCheck1"
+                          value="3"
+                          th:checked="${items.contains(3)}"
+                        />
+                        <label class="form-check-label" for="gridCheck1">
+                          Funeral prayer
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          name="itemCheckbox"
+                          class="form-check-input"
+                          type="checkbox"
+                          id="gridCheck1"
+                          value="4"
+                          th:checked="${items.contains(4)}"
+                        />
+                        <label class="form-check-label" for="gridCheck1">
+                          Digger's Wages
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          name="itemCheckbox"
+                          class="form-check-input"
+                          type="checkbox"
+                          id="gridCheck1"
+                          value="5"
+                          th:checked="${items.contains(5)}"
+                        />
+                        <label class="form-check-label" for="gridCheck1">
+                          Tombstone
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          name="itemCheckbox"
+                          class="form-check-input"
+                          type="checkbox"
+                          id="gridCheck1"
+                          value="6"
+                          th:checked="${items.contains(6)}"
+                        />
+                        <label class="form-check-label" for="gridCheck1">
+                          Tahlil & Yaasin
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          name="itemCheckbox"
+                          class="form-check-input"
+                          type="checkbox"
+                          id="gridCheck1"
+                          value="7"
+                          th:checked="${items.contains(7)}"
+                        />
+                        <label class="form-check-label" for="gridCheck1">
+                          Grave Marker
+                        </label>
+                      </div>
+                      <div class="form-check">
+                        <input
+                          name="itemCheckbox"
+                          class="form-check-input"
+                          type="checkbox"
+                          id="gridCheck1"
+                          value="8"
+                          th:checked="${items.contains(8)}"
+                        />
+                        <label class="form-check-label" for="gridCheck1">
+                          Coffin Package
+                        </label>
+                      </div>
+                      <br />
+
                       <div class="d-flex flex-row align-items-center mb-4">
                         <div class="form-outline flex-fill mb-0">
-                          <label class="form-label" for="form3Example4cd">Price</label>
-                          <input type="text" id="form3Example4cd" class="price" th:value="price" />
+                          <label class="form-label" for="form3Example4cd"
+                            >Price</label
+                          >
+                          <input
+                            name="price"
+                            type="number"
+                            id="form3Example4cd"
+                            class="price"
+                            th:value="${packages.price}"
+                          />
                         </div>
                       </div>
-    
+
                       <div class="d-flex justify-content-end pt-3">
-                        <button type="submit" class="btn btn-light btn-lg">Update</button>
-                        <button type="cancel" class="btn btn-light btn-lg ms-2">Cancel</button>
+                        <button type="cancel" class="btn btn-light btn-lg ms-2">
+                          Cancel
+                        </button>
+                        <button type="submit" class="btn btn-light btn-lg">
+                          Update
+                        </button>
                       </div>
-    
-    
                     </form>
-    
                   </div>
-                  <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-    
-                    <img src="https://static.vecteezy.com/system/resources/previews/003/514/497/original/design-studio-concept-isolated-development-of-graphics-pictures-brand-logo-people-scene-in-flat-cartoon-design-illustration-for-blogging-website-mobile-app-promotional-materials-vector.jpg"
-                    class="img-fluid" alt="Sample image">
-    
+                  <div
+                    class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2"
+                  >
+                    <img
+                      src="https://static.vecteezy.com/system/resources/previews/003/514/497/original/design-studio-concept-isolated-development-of-graphics-pictures-brand-logo-people-scene-in-flat-cartoon-design-illustration-for-blogging-website-mobile-app-promotional-materials-vector.jpg"
+                      class="img-fluid"
+                      alt="Sample image"
+                    />
                   </div>
                 </div>
               </div>
@@ -120,13 +220,58 @@
         </div>
       </div>
     </section>
-   
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
-    integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
-    crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
-    integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
-    crossorigin="anonymous"></script>
-    
-</body>
+
+    <div class="toast" th:if="${error}">
+      <div class="toast-header">
+        <strong class="mr-auto">Error</strong>
+        <button
+          type="button"
+          class="ml-2 mb-1 close"
+          data-dismiss="toast"
+          aria-label="Close"
+        >
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="toast-body" th:text="${error}"></div>
+    </div>
+    <!-- Add this script block at the end of your HTML template -->
+    <!-- <script th:inline="javascript">
+      $(document).ready(function () {
+        // Check if the error query parameter is present
+        var urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.has("error")) {
+          // Get the error message from the model
+          var error = /*[[${error}]]*/ "";
+
+          // Create the toast element
+          var toast = $(
+            '<div class="toast" role="alert" aria-live="assertive" aria-atomic="true" data-bs-autohide="true">'
+          )
+            .append(
+              '<div class="toast-header"><strong class="me-auto">Error</strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div>'
+            )
+            .append('<div class="toast-body">' + error + "</div>");
+
+          // Append the toast to the toastContainer div
+          $("#toastContainer").append(toast);
+
+          // Show the toast
+          var toastInstance = new bootstrap.Toast(toast[0]);
+          toastInstance.show();
+        }
+      });
+    </script> -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"
+      integrity="sha384-fbbOQedDUMZZ5KreZpsbe1LCZPVmfTnH7ois6mU1QK+m14rQ1l2bGBq41eYeM/fS"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

@@ -97,21 +97,25 @@
                   <div class="input-div">
                     <span>Password</span>
                     <input
+                      id="password"
                       name="password"
                       type="password"
                       class="register"
                       placeholder="Minimum 8 digit password"
-                      minlength="8" required
+                      minlength="8"
+                      required
                     />
                   </div>
                   <div class="input-div">
                     <span>Confirm Password</span>
                     <input
+                      id="confirmPassword"
                       name="confirm_password"
                       type="password"
                       class="register"
                       placeholder="Must the same password"
-                      minlength="8" required
+                      minlength="8"
+                      required
                     />
                   </div>
                 </div>
@@ -124,8 +128,8 @@
                 </div>
 
                 <div class="buttons">
-                  <button type="submit" class="next_button">Create</button>
                   <button type="cancel" class="cancel">Cancel</button>
+                  <button type="submit" class="next_button">Create</button>
                 </div>
               </div>
             </div>
@@ -133,7 +137,19 @@
         </form>
       </div>
     </div>
+    <script>
+      function validatePassword() {
+        var password = document.getElementById("password").value;
+        var confirmPassword = document.getElementById("confirmPassword").value;
 
+        if (password !== confirmPassword) {
+          alert("Passwords do not match!");
+        } else {
+          alert("Passwords match!");
+          // Add your code for further processing or form submission here
+        }
+      }
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
