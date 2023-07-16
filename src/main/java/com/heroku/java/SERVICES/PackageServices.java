@@ -39,6 +39,7 @@ public class PackageServices {
 
   private final String INSERT_PACKAGEDETAILS = "INSERT INTO packagedetails (packageid,itemid) VALUES (?,?)";
   private final String INSERT_PACKAGE = "INSERT INTO packages (name,price) VALUES (?,?) RETURNING packageid;";
+  private final String UPDATE_PACKAGE_MEMBER = "UPDATE member SET packageid=? WHERE userid=? ;";
   private final String SELECT_ALL_PACKAGES = "SELECT * FROM packages ORDER BY packageid;";
   private final String SELECT_PACKAGE_ITEM = "SELECT * FROM packagedetails ORDER BY itemid;";
   private final String SELECT_PACKAGES_ID = "SELECT * FROM packages WHERE packageid = ?;";
@@ -82,6 +83,27 @@ public class PackageServices {
       // return status;
       database.printSQLException(ex);
     }
+  }
+
+  public String insertPackageMember(int userid, int packageid) {
+    String url = "";
+    try (Connection connection = dataSource.getConnection();
+        PreparedStatement statement = connection.prepareStatement(UPDATE_PACKAGE_MEMBER)) {
+      statement.setInt(1, packageid);
+      statement.setInt(2, userid);
+
+      int rowUpdate = statement.executeUpdate();
+      boolean status = rowUpdate > 0;
+      if(status){
+        url = "redirect:/home-m?join=success";
+      }else{
+         url = "redirect:/home-m?join=failed";
+      }
+    } catch (SQLException ex) {
+      // return status;
+      database.printSQLException(ex);
+    }
+    return url;
   }
 
   public ArrayList<Packages> getAllPackages() {
@@ -137,6 +159,7 @@ public class PackageServices {
     try (Connection connection = dataSource.getConnection()) {
       final var prepareStatement = connection.prepareStatement(SELECT_PACKAGES_ID);
       prepareStatement.setInt(1, packages.getPackageid());
+      System.out.println(packages.getPackageid());
       ResultSet rs = prepareStatement.executeQuery();
 
       while (rs.next()) {

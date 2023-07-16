@@ -59,14 +59,7 @@ public class LoginController {
     }
   }
 
-   @GetMapping("/home-m")
-  String homeMember(HttpSession session) {
-    if (accountServices.checkSession(session)) {
-      return "dashboard-m";
-    } else {
-      return "redirect:/";
-    }
-  }
+   
 
   @PostMapping("/login-account")
   String homepage(HttpSession session, @ModelAttribute("login") Users users, Model model) {

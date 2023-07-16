@@ -34,7 +34,7 @@ public class AccountServices {
     this.session = session;
   }
 
-  private final String LOGIN_SQL = "SELECT u.userid,name, email, password, CASE WHEN s.userid is null THEN 0  WHEN s.userid IS NOT NULL THEN s.userid END AS role from khairatuser u left outer join staff s on (u.userid = s.userid) where email=?;";
+  private final String LOGIN_SQL = "SELECT u.userid,name, email, password, CASE WHEN s.userid is null THEN 0  WHEN s.userid IS NOT NULL THEN s.userid END AS role, m.packageid from khairatuser u left outer join staff s on (u.userid = s.userid) left outer join member m on (u.userid = m.userid) where email=?;";
   private final String SELECT_EMAIL = "SELECT email FROM khairatuser WHERE email=?;";
   private final String INSERT_USER_STAFF = "INSERT INTO khairatuser (name, ic, email,password) VALUES (?,?,?,?) RETURNING userid AS userid;";
   private final String INSERT_STAFF = "INSERT INTO staff (userid, managerid) VALUES (?,?);";
@@ -92,13 +92,18 @@ public class AccountServices {
         String name = rs.getString("name");
         String password = rs.getString("password");
         int role = rs.getInt("role");
-
+        int packageid = rs.getInt("packageid");
+        System.out.println("package id : " + packageid);
         System.out.println(userid + " " + email + " " + password + " " + role);
 
         if (email.equals(users.getEmail()) && passwordEncoder.matches(users.getPassword(), password)) {
           session.setAttribute("userid", userid);
           session.setAttribute("name", name);
           session.setAttribute("email", email);
+
+          if(packageid != 0){
+            session.setAttribute("packageid", packageid);
+          }
 
           if (role == 0) {
             returnAcc = "member";
@@ -129,7 +134,7 @@ public class AccountServices {
       prepareStatement.setString(2, users.getIc());
       prepareStatement.setString(3, users.getEmail());
       prepareStatement.setString(4, passwordEncoder.encode(users.getPassword()));
-      
+
       ResultSet parentResultSet = prepareStatement.executeQuery();
       if (parentResultSet.next()) {
         long parentId = parentResultSet.getLong("userid");

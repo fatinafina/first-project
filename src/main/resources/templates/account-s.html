@@ -89,7 +89,7 @@
                   <th class="border-gray-200" scope="col">Name</th>
                   <th class="border-gray-200" scope="col">Ic Number</th>
                   <th class="border-gray-200" scope="col">Email</th>
-                  <th class="border-gray-200" scope="col">Role</th>
+                  <!-- <th class="border-gray-200" scope="col">Role</th> -->
                   <th class="border-gray-200" scope="col">Edit</th>
                   <th class="border-gray-200" scope="col">Delete</th>
                 </tr>
@@ -108,7 +108,7 @@
                     <td th:text="${user.name}"></td>
                     <td th:text="${user.ic}"></td>
                     <td th:text="${user.email}"></td>
-                    <td><span class="badge bg-light text-dark">Staff</span></td>
+                    <!-- <td><span class="badge bg-light text-dark">Staff</span></td> -->
                     <!-- <td><span class="badge bg-success">Manager</span></td> -->
                     <td>
                       <a th:href="@{/update-staff?userid=} + ${user.userid}"

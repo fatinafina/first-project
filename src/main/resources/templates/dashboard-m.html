@@ -13,9 +13,9 @@
     <link th:href="@{stylesheets/main.css}" rel="stylesheet" type="text/css" />
     <script src="scripts.js"></script>
     <link
-    rel="stylesheet"
-    th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css}"
-  />
+      rel="stylesheet"
+      th:href="@{https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css}"
+    />
   </head>
   <body style="height: 100vh">
     <script
@@ -50,12 +50,15 @@
               <a class="nav-link" aria-current="page" href="home-m">Home</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="about-us-m">About Us</a>
+              <a class="nav-link" aria-current="page" href="about-us-m"
+                >About Us</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="contact-m">Contact</a>
+              <a class="nav-link" aria-current="page" href="contact-m"
+                >Contact</a
+              >
             </li>
-          
           </ul>
           <!-- Left links -->
         </div>
@@ -75,99 +78,102 @@
           </div>
         </div>
 
-
-            <div class="container">					
-                <div class="section-title text-center">
-                    <h3>Pricing Package</h3>
-                </div>				
-                <div class="row text-center">									
-                   
-                    <div class="col-lg-6 col-sm-6 col-xs-12 ">
-                        <div class="pricing_design">
-                            <div class="single-pricing">
-                                <div class="price-head">		
-                                    <h2>Classic</h2>
-                                    <h1 class="price">RM50.00</h1>
-                                    <span>/Yearly</span>
-                                </div>
-                                <ul>
-                                    <li> Shroud</li>
-                                    <li> Hearse</li>
-                                    <li>Funeral prayer</li>
-                                    <li> Digger's Wages</li>
-                                    <li> Tombstone</li>
-                              
-                                </ul>
-                            
-                                <button type="button" class="btn btn-outline-primary mb-3"
-                                  data-bs-toggle="modal" data-bs-target="#exampleModal">
-                                 Join Now</button>
-                            
-                            </div>
-                        </div>
-                        <div class="modal fade" id="exampleModal" tabindex="-1"
-                        aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure?</h1>
-                                    <button type="button" class="btn-close"
-                                        data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">Do you really want to choose this package?</div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary"
-                                        data-bs-dismiss="modal">Cancel</button>
-                                    <button type="button" class="btn btn-primary" id="delete">Yes</button>
-                                </div>
-                            </div>
-                        </div>
+        <div class="container">
+          <div class="section-title text-center">
+            <h3>Pricing Package</h3>
+          </div>
+          <div class="row text-center col-12">
+            <!-- Start col -->
+            <!-- <span  class="col-6"> -->
+            <div
+              class="col-lg-6 col-sm-6 col-xs-12 mb-3"
+              th:each="package, iterStat  : ${packages}"
+            >
+              <form action="/insert-package" method="post">
+                <div class="pricing_design">
+                  <div class="single-pricing">
+                    <div class="price-head">
+                      <h2 th:text="${package.name}">Classic</h2>
+                      <h1 class="price" th:text="'RM' + ${package.price}">
+                        RM50.00
+                      </h1>
+                      <span>/Yearly</span>
+                      <input type="hidden" name="pid" th:value="${package.packageid}" />
                     </div>
-                    </div><!--- END COL -->	
-                    <div class="col-lg-6 col-sm-6 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0" style="visibility: visible; animation-duration: 1s; animation-delay: 0.3s; animation-name: fadeInUp;">
-                        <div class="pricing_design">
-                            <div class="single-pricing">
-                                <div class="price-head">		
-                                    <h2>Premium</h2>
-                                    <h1 class="price">RM80.00</h1>
-                                    <span>/Yearly</span>
-                                </div>
-                                <ul>
-                                    <li> Shroud</li>
-                                    <li> Hearse</li>
-                                    <li>Funeral prayer</li>
-                                    <li> Digger's Wages</li>
-                                    <li> Tombstone</li>
-                                    <li>Tahlil & Yaasin</li>
-                                    <li> Grave Marker</li>
-                                    <li> Coffin Package</li>
-                                </ul>
-                                <button type="button" class="btn btn-outline-primary mb-3"
-                                data-bs-toggle="modal" data-bs-target="#exampleModal">
-                               Join Now</button>
-                          
-                          </div>
+                    <ul>
+                      <li
+                        th:each="item : ${items}"
+                        th:if="${item.packageid == package.packageid}"
+                      >
+                        <span th:if="${item.itemid == 1}">Shroud</span>
+                        <span th:if="${item.itemid == 2}">Hearse</span>
+                        <span th:if="${item.itemid == 3}">Funeral prayer</span>
+                        <span th:if="${item.itemid == 4}">Digger's Wages</span>
+                        <span th:if="${item.itemid == 5}">Tombstone</span>
+                        <span th:if="${item.itemid == 6}">Tahlil & Yaasin</span>
+                        <span th:if="${item.itemid == 7}">Grave Marker</span>
+                        <span th:if="${item.itemid == 8}">Coffin Package</span>
+                      </li>
+                    </ul>
+
+                    <button
+                      type="button"
+                      class="btn btn-outline-primary mb-3"
+                      data-bs-toggle="modal"
+                      th:data-bs-target="'#exampleModal-' + ${package.packageid}"
+                    >
+                      Join Now
+                    </button>
+                  </div>
+                </div>
+                <div
+                  class="modal fade"
+                  th:id="'exampleModal-' + ${package.packageid}"
+                  tabindex="-1"
+                  aria-labelledby="exampleModalLabel"
+                  aria-hidden="true"
+                >
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h1 class="modal-title fs-5" id="exampleModalLabel">
+                          Are you sure?
+                        </h1>
+                        <button
+                          type="button"
+                          class="btn-close"
+                          data-bs-dismiss="modal"
+                          aria-label="Close"
+                        ></button>
                       </div>
-                      <div class="modal fade" id="exampleModal" tabindex="-1"
-                      aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                          <div class="modal-content">
-                              <div class="modal-header">
-                                  <h1 class="modal-title fs-5" id="exampleModalLabel">Are you sure?</h1>
-                                  <button type="button" class="btn-close"
-                                      data-bs-dismiss="modal" aria-label="Close"></button>
-                              </div>
-                              <div class="modal-body">Do you really want to choose this package?</div>
-                              <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary"
-                                      data-bs-dismiss="modal">Cancel</button>
-                                  <button type="button" class="btn btn-primary" id="delete">Yes</button>
-                              </div>
-                          </div>
+                      <div class="modal-body">
+                        Do you really want to choose this package?
                       </div>
-                  </div><!--- END COL -->			  
-                </div><!--- END ROW -->
-            </div><!--- END CONTAINER -->
+                      <div class="modal-footer">
+                        <button
+                          type="button"
+                          class="btn btn-secondary"
+                          data-bs-dismiss="modal"
+                        >
+                          Cancel
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                          Yes
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <!-- </span> -->
+
+            <!--- END COL -->
+
+            <!--- END ROW -->
+          </div>
+          <!--- END CONTAINER -->
+        </div>
       </div>
     </div>
     <div
@@ -194,24 +200,24 @@
             >
               <img src="girl (1).png" alt="girl" width="70" height="70" /><br />
               <h4 class="mb-2">NURIN JANNAH</h4>
-              <p class="text-muted mb-4"> <span class="mx-2" th:text="${session.role}"></span>| 
-                <a class="email" th:text="${session.email}"></a></p>
-              
+              <p class="text-muted mb-4">
+                <span class="mx-2" th:text="${session.role}"></span>|
+                <a class="email" th:text="${session.email}"></a>
+              </p>
             </div>
             <hr class="my-4" />
             <nav class="nav flex-column">
-            
               <a
                 class="nav-link d-flex flex-column justify-content-center align-items-center"
                 href="profile-m"
                 ><i class="bi bi-person fa-lg"></i>Profile</a
               >
-          
+
               <a
-              class="nav-link d-flex flex-column justify-content-center align-items-center"
-              href="/payment-history-m"
-              ><i class="bi bi-credit-card"></i>Payment</a
-            >
+                class="nav-link d-flex flex-column justify-content-center align-items-center"
+                href="/payment-history-m"
+                ><i class="bi bi-credit-card"></i>Payment</a
+              >
               <a
                 class="nav-link d-flex flex-column justify-content-center align-items-center"
                 href="/logout"
@@ -222,6 +228,7 @@
         </div>
       </div>
     </div>
+    
 
     <!-- Script section -->
     <script

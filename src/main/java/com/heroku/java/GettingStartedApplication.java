@@ -70,11 +70,6 @@ public class GettingStartedApplication {
     return "payment-history-m";
   }
 
-  @GetMapping("/make-payment-m")
-  String makePayment() {
-    return "make-payment-m";
-  }
-
   @GetMapping("/view-payment-s")
   String viewPayment() {
     return "view-payment-s";

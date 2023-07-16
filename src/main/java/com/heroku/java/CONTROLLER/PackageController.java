@@ -76,9 +76,11 @@ public class PackageController {
   }
 
   @GetMapping("/package-s")
-  String showPackage(Model model) {
+  String showPackage(Model model, HttpSession session) {
+  
     List<Packages> packages = packageServices.getAllPackages();
     List<Packages> itemPackages = packageServices.getAllItem();
+    
 
     model.addAttribute("packages", packages);
     model.addAttribute("items", itemPackages);
