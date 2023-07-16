@@ -95,7 +95,9 @@ public class PackageServices {
       int rowUpdate = statement.executeUpdate();
       boolean status = rowUpdate > 0;
       if(status){
+        session.setAttribute("packageid", packageid);
         url = "redirect:/home-m?join=success";
+        
       }else{
          url = "redirect:/home-m?join=failed";
       }

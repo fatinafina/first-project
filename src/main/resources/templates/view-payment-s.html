@@ -119,36 +119,39 @@
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <form
-                    action="/delete-package"
+                
+                <tr th:each="payment, iterStat  : ${payments}">
+                  <!-- <form
+                    action="/updatePayment"
                     method="post"
                     modelAttribute="payment"
-                  >
-                    <th><b >1</b></th>
+                  > -->
+                    <td><b th:text="'#' + ${iterStat.index + 1}">1</b></td>
                     <!-- <td style="display: none">
-                      <input name="packageid" th:value="${payment.packageid}" />
+                      <input name="paymentid" th:value="${payment.paymentid}" />
                     </td> -->
-                    <td >FATIN FAQIHAH</td>
-                    <td >021228140849</td>
-                    <td >Online banking</td>
-                    <td >2023-12-22</td>
-                     <td><span class="badge bg-success">Verify</span></td>
-                    <!-- <td>
-                      <a href="/"
-                        ><i
-                          class="bi bi-pencil-square"
-                          style="color: #93806c; font-size: 30px"
-                        ></i
-                      ></a>
-                    </td> -->
+                    <td th:text="${payment.memberName}">FATIN FAQIHAH</td>
+                    <td th:text="${payment.ic}">021228140849</td>
+                    <td th:text="${payment.paymentmethod}">Online banking</td>
+                    <td th:text="${payment.date}">2023-12-22</td>
+                    <td th:if="${payment.statuspayment == 'unverified'}">
+                        <span class="badge bg-secondary">
+                          unverified
+                        </span>
+                      </td>
+
+                      <td th:if="${payment.statuspayment == 'verified'}">
+                        <span class="badge bg-success">
+                          verified
+                        </span>
+                      </td>
 
                     <th>
                       <button
                         type="button"
                         class="btn btn-outline-primary mb-3"
                         data-bs-toggle="modal"
-                        data-bs-target="#exampleModal"
+                        th:data-bs-target="'#exampleModal-' + ${payment.paymentid}"
                     
                       >
                       <i
@@ -160,7 +163,7 @@
                     </th>
                     <div
                       class="modal fade"
-                      id="exampleModal"
+                      th:id="'exampleModal-' + ${payment.paymentid}"
                       tabindex="-1"
                       aria-labelledby="exampleModalLabel"
                       aria-hidden="true"
@@ -169,7 +172,7 @@
                         <div class="modal-content">
                           <div class="modal-header">
                             <h1 class="modal-title fs-5" id="exampleModalLabel">
-                              Edit status
+                              Edit status payment
                             </h1>
                             <button
                               type="button"
@@ -186,7 +189,7 @@
                                   <b>Member Name</b>
                                 </label>
                                 <div class="col-8">
-                                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="FATIN FAQIHAH">
+                                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" th:value="${payment.memberName}">
                                 </div>
                               </div>
                               <div class="mb-3 row">
@@ -194,7 +197,7 @@
                                   <b>Member Ic</b>
                                 </label>
                                 <div class="col-8">
-                                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="021228140849">
+                                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" th:value="${payment.ic}">
                                 </div>
                               </div>
                               <div class="mb-3 row">
@@ -202,128 +205,65 @@
                                   <b>Date</b>
                                 </label>
                                 <div class="col-8">
-                                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="2023-12-23">
+                                  <input type="text" readonly class="form-control-plaintext" id="staticEmail" th:value="${payment.date}">
+                                  <input name="paymentid" th:value="${payment.paymentid}" hidden/>
                                 </div>
                               </div>
-                              <div class="mb-3 row">
+                             
+                              <!-- <div class="mb-3 row">
                                 <label for="staticEmail" class="col-4 col-form-label">
                                   <b>Status : </b>
                                 </label>
                                 <div class="col-8">
-                                  <select class="form-select" aria-label="Default select example">
-                                    <option selected>Verify</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                  <select name="statuspayment" class="form-select">
+                                    
+                                      <option selected th:value="${payment.statuspayment}" th:text="${payment.statuspayment}"></option>
+                                  
+
+                                    <span th:if="${payment.statuspayment == 'verify'}">
+                                      <option value="uneverify" >Unverify</option>
+                                    </span>
+                                    <span th:if="${payment.statuspayment == 'unverify'}">
+                                      <option value="verify">Verify</option>
+                                    </span>
                                   </select>
                                 </div>
-                              </div>
+                              </div> -->
                             </div>
                               <div class="col-7 d-flex flex-column justify-content-center align-items-center">
-                                <h6>Receipt</h6>
-                                <img src="/maybank_receipt.jpeg" width="250px" height="250px"/>
+                                <b>Receipt</b>
+                                
+                                <a th:href="${payment.imageSrc}" download>
+                                <img th:src="${payment.imageSrc}" width="250px" height="250px"/>
+                              </a>
+                              <h6>Click image to download</h6>
                               </div>
                             </section>
                           </div>
                           <div class="modal-footer">
-                            <button
+                            <a
                               type="button"
-                              class="btn btn-secondary"
-                              data-bs-dismiss="modal"
+                              class="btn btn-danger"
+                              th:href="'/unverifiedStatus?id=' + ${payment.paymentid}"
                             >
-                              Cancel
-                            </button>
-                            <button
-                              type="submit"
-                              class="btn btn-primary"
-                              id="delete"
+                              Unverified
+                          </a>
+                            <a
+                              type="button"
+                              class="btn btn-success"
+                             
+                              th:href="'/verifiedStatus?id=' + ${payment.paymentid}"
                             >
-                              Save
-                            </button>
+                              Verified
+                        </a>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </form>
-                </tr>
-                <tr th:each="payment, iterStat  : ${payments}">
-                  <form
-                    action="/delete-package"
-                    method="post"
-                    modelAttribute="payment"
-                  >
-                    <td><b th:text="'#' + ${iterStat.index + 1}">1</b></td>
-                    <td style="display: none">
-                      <input name="packageid" th:value="${payment.packageid}" />
-                    </td>
-                    <td th:text="${payment.name}">FATIN FAQIHAH</td>
-                    <td th:text="${payment.ic}">021228140849</td>
-                    <td th:text="${payment.method}">Online banking</td>
-                    <td th:text="${payment.date}">2023-12-22</td>
-                    <td>
-                      <a
-                        th:href="'/update-package-s?pid=' + ${package.packageid}"
-                        ><i
-                          class="bi bi-pencil-square"
-                          style="color: #93806c; font-size: 30px"
-                        ></i
-                      ></a>
-                    </td>
-
-                    <!-- <th>
-                      <button
-                        type="button"
-                        class="btn btn-outline-primary mb-3"
-                        data-bs-toggle="modal"
-                        th:data-bs-target="'#exampleModal-' + ${package.packageid}"
-                      >
-                        <i class="bi bi-trash3 fa-sm"></i>
-                      </button>
-                    </th>
-                    <div
-                      class="modal fade"
-                      th:id="'exampleModal-' + ${package.packageid}"
-                      tabindex="-1"
-                      aria-labelledby="exampleModalLabel"
-                      aria-hidden="true"
-                    >
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="exampleModalLabel">
-                              Are you sure?
-                            </h1>
-                            <button
-                              type="button"
-                              class="btn-close"
-                              data-bs-dismiss="modal"
-                              aria-label="Close"
-                            ></button>
-                          </div>
-                          <div class="modal-body">
-                            Do you really want to delete this record? This
-                            process cannot be undone
-                          </div>
-                          <div class="modal-footer">
-                            <button
-                              type="button"
-                              class="btn btn-secondary"
-                              data-bs-dismiss="modal"
-                            >
-                              Cancel
-                            </button>
-                            <button
-                              type="submit"
-                              class="btn btn-primary"
-                              id="delete"
-                            >
-                              Delete
-                            </button>
-                          </div>
-                        </div> -->
+                    <!-- end modal -->
                       </div>
                     </div>
-                  </form>
+                  <!-- </form> -->
                 </tr>
               </tbody>
             </table>
@@ -355,7 +295,7 @@
               class="profile d-flex flex-column justify-content-center align-items-center"
             >
               <img src="girl.png" alt="girl" width="70" height="70" /><br />
-              <h4 class="mb-2">FATIN AFINA</h4>
+              <h4 class="mb-2" th:text="${session.name}"></h4>
               <p class="text-muted mb-4">
                 <span class="mx-2" th:text="${session.role}"></span>|
                 <a class="email" th:text="${session.email}"></a>

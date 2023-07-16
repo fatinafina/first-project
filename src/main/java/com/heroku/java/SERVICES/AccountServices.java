@@ -103,6 +103,8 @@ public class AccountServices {
 
           if(packageid != 0){
             session.setAttribute("packageid", packageid);
+          }else{
+            session.setAttribute("packageid", 0);
           }
 
           if (role == 0) {

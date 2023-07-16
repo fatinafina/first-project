@@ -39,11 +39,14 @@ public class DashboardController {
     // } else {
     // return "redirect:/";
     // }
+    Packages pg = new Packages();
+    pg.setPackageid((int) session.getAttribute("packageid"));
     ArrayList<Packages> packages = packageServices.getAllPackages();
     ArrayList<Packages> itemPackages = packageServices.getAllItem();
 
     model.addAttribute("packages", packages);
     model.addAttribute("items", itemPackages);
+    model.addAttribute("pg", pg);
 
     return "dashboard-m";
   }

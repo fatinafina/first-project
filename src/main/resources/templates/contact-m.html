@@ -123,7 +123,7 @@
           class="profile d-flex flex-column justify-content-center align-items-center"
         >
           <img src="girl (1).png" alt="girl" width="70" height="70" /><br />
-          <h4 class="mb-2">NURIN JANNAH</h4>
+          <h4 class="mb-2" th:text="${session.name}"></h4>
           <p class="text-muted mb-4"> <span class="mx-2" th:text="${session.role}"></span>| 
             <a class="email" th:text="${session.email}"></a></p>
           

@@ -98,7 +98,11 @@
                         RM50.00
                       </h1>
                       <span>/Yearly</span>
-                      <input type="hidden" name="pid" th:value="${package.packageid}" />
+                      <input
+                        type="hidden"
+                        name="pid"
+                        th:value="${package.packageid}"
+                      />
                     </div>
                     <ul>
                       <li
@@ -115,15 +119,39 @@
                         <span th:if="${item.itemid == 8}">Coffin Package</span>
                       </li>
                     </ul>
+                    <span th:if="${pg.packageid == 0}">
+                      <button
+                        type="button"
+                        class="btn btn-outline-primary mb-3"
+                        data-bs-toggle="modal"
+                        th:data-bs-target="'#exampleModal-' + ${package.packageid}"
+                      >
+                        Join Now
+                      </button>
+                    </span>
 
-                    <button
-                      type="button"
-                      class="btn btn-outline-primary mb-3"
-                      data-bs-toggle="modal"
-                      th:data-bs-target="'#exampleModal-' + ${package.packageid}"
-                    >
-                      Join Now
-                    </button>
+                    <span th:if="${pg.packageid != package.packageid && pg.packageid != 0}">
+                      <button
+                        type="button"
+                        class="btn btn-outline-primary mb-3"
+                        data-bs-toggle="modal"
+                        th:data-bs-target="'#exampleModal-' + ${package.packageid}"
+                      >
+                        Switch Package
+                      </button>
+                    </span>
+
+                    <span th:if="${pg.packageid == package.packageid}">
+                      <button
+                        type="button"
+                        class="btn btn-outline-primary mb-3"
+                        data-bs-toggle="modal"
+                        th:data-bs-target="'#exampleModal-' + ${package.packageid}"
+                        disabled
+                      >
+                        Suscribed
+                      </button>
+                    </span>
                   </div>
                 </div>
                 <div
@@ -199,7 +227,7 @@
               class="profile d-flex flex-column justify-content-center align-items-center"
             >
               <img src="girl (1).png" alt="girl" width="70" height="70" /><br />
-              <h4 class="mb-2">NURIN JANNAH</h4>
+              <h4 class="mb-2" th:text="${session.name}"></h4>
               <p class="text-muted mb-4">
                 <span class="mx-2" th:text="${session.role}"></span>|
                 <a class="email" th:text="${session.email}"></a>
@@ -228,7 +256,6 @@
         </div>
       </div>
     </div>
-    
 
     <!-- Script section -->
     <script

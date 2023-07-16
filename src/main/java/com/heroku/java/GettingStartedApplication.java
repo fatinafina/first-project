@@ -65,15 +65,9 @@ public class GettingStartedApplication {
     return "create-staff";
   }
 
-  @GetMapping("/payment-history-m")
-  String paymentHistory() {
-    return "payment-history-m";
-  }
+  
 
-  @GetMapping("/view-payment-s")
-  String viewPayment() {
-    return "view-payment-s";
-  }
+  
 
   @GetMapping("/receipt")
   String showReceipt() {

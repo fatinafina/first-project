@@ -13,9 +13,27 @@ public class Payment {
   private String statuspayment;
   private int userid;
 
+  private String memberName;
+  private String ic;
+
   public MultipartFile receiptimage;
   private String imageSrc;
   private byte[] receiptimagebyte;
+
+
+  
+
+  public Payment(int paymentid, String paymentmethod, Date date, Time paymenttime, String statuspayment,
+      String memberName, String ic, String imageSrc) {
+    this.paymentid = paymentid;
+    this.paymentmethod = paymentmethod;
+    this.date = date;
+    this.paymenttime = paymenttime;
+    this.statuspayment = statuspayment;
+    this.memberName = memberName;
+    this.ic = ic;
+    this.imageSrc = imageSrc;
+  }
 
   public Payment(int paymentid, String paymentmethod, Date date, Time paymenttime, String statuspayment, int userid,
       MultipartFile receiptimage, String imageSrc, byte[] receiptimagebyte) {
@@ -28,6 +46,15 @@ public class Payment {
     this.receiptimage = receiptimage;
     this.imageSrc = imageSrc;
     this.receiptimagebyte = receiptimagebyte;
+  }
+
+  public Payment(int paymentid,String paymentmethod,Date date,Time paymenttime, String statuspayment){
+    this.paymentid = paymentid;
+    this.paymentmethod = paymentmethod;
+    this.date = date;
+    this.paymenttime = paymenttime;
+    this.statuspayment = statuspayment;
+    
   }
 
   public Payment(int paymentid, String paymentmethod, Date date, Time paymenttime, int userid,
@@ -45,6 +72,22 @@ public class Payment {
 
   public Payment() {
     // default constructor
+  }
+
+  public String getMemberName() {
+    return memberName;
+  }
+
+  public void setMemberName(String memberName) {
+    this.memberName = memberName;
+  }
+
+  public String getIc() {
+    return ic;
+  }
+
+  public void setIc(String ic) {
+    this.ic = ic;
   }
 
 
