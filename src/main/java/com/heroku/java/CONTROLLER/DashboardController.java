@@ -6,6 +6,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.heroku.java.MODEL.Packages;
+import com.heroku.java.MODEL.Users;
 import com.heroku.java.SERVICES.AccountServices;
 import com.heroku.java.SERVICES.PackageServices;
 
@@ -39,6 +41,7 @@ public class DashboardController {
     // } else {
     // return "redirect:/";
     // }
+    Users users = new Users();
     Packages pg = new Packages();
     pg.setPackageid((int) session.getAttribute("packageid"));
     ArrayList<Packages> packages = packageServices.getAllPackages();
@@ -68,6 +71,28 @@ public class DashboardController {
     // model.addAttribute("items", itemPackages);
 
     return url;
+  }
+
+  @GetMapping("/home-s")
+  public String homeStaff(HttpSession session, Model model) {
+    Users users = new Users();
+    if (accountServices.checkSession(session)) {
+      int staffCount = accountServices.getTotalStaff();
+      int memberCount = accountServices.getTotalMember();
+      int countRegister = accountServices.getTotalRegister();
+      int countUnregister = accountServices.getTotalUnregister();
+      
+      users.setCountRegister(countRegister);
+      users.setCountUnregister(countUnregister);
+      users.setCountStaff(staffCount);
+      users.setCountMember(memberCount);
+
+      model.addAttribute("users", users);
+
+      return "dashboard-s";
+    } else {
+      return "redirect:/";
+    }
   }
 
 }

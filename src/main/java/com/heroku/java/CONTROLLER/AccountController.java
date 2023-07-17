@@ -81,7 +81,7 @@ public class AccountController {
         status = false;
         System.out.println("(Status) create account staff : " + status);
         System.out.println(">>> Confirm password is incorrect...");
-        return "redirect:/create-staff";
+        return "redirect:/create-staff?error=password_incorrect";
       }
     } else {
       return "redirect:/";
@@ -181,6 +181,20 @@ public class AccountController {
     boolean status = accountServices.deleteUsers(users);
     System.out.println("status delete : " +  status);
     return "redirect:/account-m";
+  }
+
+  @PostMapping("/delete-profile-m")
+  public String deleteProfileMember(@ModelAttribute("deleteMember") Users users, HttpSession session) {
+    System.out.println("member id : " +users.getUserid());
+    boolean status = accountServices.deleteUsers(users);
+    System.out.println("status delete : " +  status);
+    if(status){
+      session.invalidate();
+       return "redirect:/";
+    }else{
+      return "redirect:/profile-m";
+    }
+   
   }
 
    @PostMapping("/delete-staff")

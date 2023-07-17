@@ -50,14 +50,7 @@ public class LoginController {
     return "redirect:/";
   }
 
-  @GetMapping("/home-s")
-  public String homeStaff(HttpSession session) {
-    if (accountServices.checkSession(session)) {
-      return "dashboard-s";
-    } else {
-      return "redirect:/";
-    }
-  }
+ 
 
    
 

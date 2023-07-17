@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
+// import com.azul.crs.client.Result;
 import com.heroku.java.HELPER.SQLEx;
 import com.heroku.java.MODEL.Users;
 
@@ -39,11 +40,15 @@ public class AccountServices {
   private final String INSERT_USER_STAFF = "INSERT INTO khairatuser (name, ic, email,password) VALUES (?,?,?,?) RETURNING userid AS userid;";
   private final String INSERT_STAFF = "INSERT INTO staff (userid, managerid) VALUES (?,?);";
   private final String SELECT_ALL_STAFF = "SELECT khairatuser.userid, name, ic, email, password FROM khairatuser JOIN staff ON (khairatuser.userid = staff.userid) ORDER BY userid;";
-  private final String SELECT_ALL_MEMBER = "SELECT khairatuser.userid, name, ic, email, password FROM khairatuser JOIN member ON (khairatuser.userid = member.userid) ORDER BY khairatuser.userid;";
+  private final String SELECT_ALL_MEMBER = "SELECT khairatuser.userid, name, ic, email, password, packageid FROM khairatuser JOIN member ON (khairatuser.userid = member.userid) ORDER BY khairatuser.userid;";
   private final String SELECT_USER_ID = "SELECT * FROM khairatuser WHERE userid=?;";
   private final String UPDATE_STAFF_ID = "UPDATE khairatuser SET name=?, ic=?, email=?, password=? WHERE userid=?;";
   private final String UPDATE_STAFF_ID_noPass = "UPDATE khairatuser SET name=?, ic=?, email=? WHERE userid=?;";
   private final String DELETE_USER_ID = "DELETE FROM khairatuser WHERE userid=?";
+  private final String COUNT_STAFF = "SELECT COUNT(*) AS staff_count FROM staff;";
+  private final String COUNT_MEMBER = "SELECT COUNT(*) AS member_count FROM member;";
+  private final String COUNT_UNREGISTER = "SELECT COUNT(*) AS member_count FROM member WHERE packageid IS NULL;";
+  private final String COUNT_REGISTER = "SELECT COUNT(*) AS member_count FROM member WHERE packageid IS NOT NULL;";
 
   public boolean checkSession(HttpSession session) {
     boolean status = false;
@@ -54,6 +59,82 @@ public class AccountServices {
       status = false;
     }
     return status;
+  }
+
+  public int getTotalStaff() {
+    int count = 0;
+    try (Connection connection = dataSource.getConnection()) {
+      // PrepareStatement
+      var prepareStatement = connection.prepareStatement(COUNT_STAFF);
+
+      final var resultSet = prepareStatement.executeQuery();
+
+      while (resultSet.next()) {
+        count = resultSet.getInt("staff_count");
+      }
+
+      connection.close();
+    } catch (Throwable t) {
+      System.out.println("message : " + t.getMessage());
+    }
+    return count;
+  }
+
+  public int getTotalMember() {
+    int count = 0;
+    try (Connection connection = dataSource.getConnection()) {
+      // PrepareStatement
+      var prepareStatement = connection.prepareStatement(COUNT_MEMBER);
+
+      final var resultSet = prepareStatement.executeQuery();
+
+      while (resultSet.next()) {
+        count = resultSet.getInt("member_count");
+      }
+
+      connection.close();
+    } catch (Throwable t) {
+      System.out.println("message : " + t.getMessage());
+    }
+    return count;
+  }
+
+  public int getTotalUnregister() {
+    int count = 0;
+    try (Connection connection = dataSource.getConnection()) {
+      // PrepareStatement
+      var prepareStatement = connection.prepareStatement(COUNT_UNREGISTER);
+
+      final var resultSet = prepareStatement.executeQuery();
+
+      while (resultSet.next()) {
+        count = resultSet.getInt("member_count");
+      }
+
+      connection.close();
+    } catch (Throwable t) {
+      System.out.println("message : " + t.getMessage());
+    }
+    return count;
+  }
+
+  public int getTotalRegister() {
+    int count = 0;
+    try (Connection connection = dataSource.getConnection()) {
+      // PrepareStatement
+      var prepareStatement = connection.prepareStatement(COUNT_REGISTER);
+
+      final var resultSet = prepareStatement.executeQuery();
+
+      while (resultSet.next()) {
+        count = resultSet.getInt("member_count");
+      }
+
+      connection.close();
+    } catch (Throwable t) {
+      System.out.println("message : " + t.getMessage());
+    }
+    return count;
   }
 
   public boolean checkEmail(String email) {
@@ -101,9 +182,9 @@ public class AccountServices {
           session.setAttribute("name", name);
           session.setAttribute("email", email);
 
-          if(packageid != 0){
+          if (packageid != 0) {
             session.setAttribute("packageid", packageid);
-          }else{
+          } else {
             session.setAttribute("packageid", 0);
           }
 
@@ -112,6 +193,7 @@ public class AccountServices {
           } else {
             returnAcc = "staff";
           }
+          session.setAttribute("role", returnAcc);
         } else {
           returnAcc = "none";
         }
@@ -245,8 +327,9 @@ public class AccountServices {
         String name = rs.getString("name");
         String ic = rs.getString("ic");
         String email = rs.getString("email");
+        int packageid = rs.getInt("packageid");
 
-        users.add(new Users(userid, name, ic, email));
+        users.add(new Users(userid, name, ic, email, packageid));
       }
       connection.close();
 
@@ -331,8 +414,8 @@ public class AccountServices {
         final var prepareStatement = connection.prepareStatement(DELETE_USER_ID);
         prepareStatement.setInt(1, users.getUserid());
 
-        prepareStatement.executeQuery();
-        status = true;
+        int rowDelete = prepareStatement.executeUpdate();
+        status = rowDelete > 0;
         connection.close();
       }
 
