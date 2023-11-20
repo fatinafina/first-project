@@ -37,7 +37,7 @@
           aria-controls="staticBackdrop"
         >
           <img
-            src="girl (1).png"
+            src="k-member.png"
             class="rounded-circle img-fluid"
             style="width: 40px; height: 40px"
           />
@@ -74,7 +74,13 @@
           <div class="card h-100 border-start-lg border-start-success">
             <div class="card-body">
               <div class="small text-muted">Package</div>
-              <div class="h3 d-flex align-items-center" th:text="${packages.name}">Classic</div>
+              <div
+                class="h3 d-flex align-items-center"
+                th:text="${packages.name}"
+              >
+                Classic
+              </div>
+              <input id="packageid" th:value="${packages.packageid}" hidden />
             </div>
           </div>
         </div>
@@ -136,16 +142,10 @@
                   <!-- <td th:text="${payments.p}">RM50.00</td> -->
                   <td>
                     <div th:if="${payment.statuspayment == 'verified'}">
-                      <span
-                        class="badge bg-success"
-                        >Paid</span
-                      >
+                      <span class="badge bg-success">Paid</span>
                     </div>
                     <div th:if="${payment.statuspayment == 'unverified'}">
-                      <span
-                        class="badge bg-light text-dark"
-                        >Pending</span
-                      >
+                      <span class="badge bg-light text-dark">Pending</span>
                     </div>
                   </td>
                 </tr>
@@ -178,7 +178,7 @@
             <div
               class="profile d-flex flex-column justify-content-center align-items-center"
             >
-              <img src="girl (1).png" alt="girl" width="70" height="70" /><br />
+              <img src="k-member.png" alt="girl" width="70" height="70" /><br />
               <h4 class="mb-2" th:text="${session.name}"></h4>
               <p class="text-muted mb-4">
                 <span class="mx-2" th:text="${session.role}"></span>|
@@ -208,6 +208,61 @@
         </div>
       </div>
     </div>
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      role="dialog"
+      data-bs-backdrop="static"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Info</h5>
+            <!-- <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
+              <span aria-hidden="true">&times;</span>
+            </button> -->
+          </div>
+          <div class="modal-body" style="padding: 40px 20px">
+            You need to choose package first to make payment (
+            <a href="home-m">Click here to choose package</a>
+            )
+          </div>
+          <div class="modal-footer">
+            <!-- <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button> -->
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      var packageid = document.getElementById("packageid").value;
+      console.log(packageid);
+
+      if (packageid == 0) {
+        var myModal = new bootstrap.Modal(
+          document.getElementById("exampleModal"),
+          {}
+        );
+      }
+
+      myModal.show();
+    </script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

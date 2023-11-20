@@ -384,7 +384,13 @@ public class AccountServices {
         prepareStatement2.setString(3, users.getEmail());
         prepareStatement2.setInt(4, users.getUserid());
         prepareStatement2.executeUpdate();
-        System.out.println("Update with without password done...");
+        if ((int) session.getAttribute("userid") == users.getUserid()) {
+          session.setAttribute("name", users.getName());
+          session.setAttribute("email", users.getEmail());
+          // System.out.println("Session name" + session.getAttribute("name"));
+          // System.out.println("Update with without password done...");
+          
+        }
         status = true;
       } else {
         prepareStatement.setString(1, users.getName());
@@ -393,7 +399,13 @@ public class AccountServices {
         prepareStatement.setString(4, passwordEncoder.encode(users.getPassword()));
         prepareStatement.setInt(5, users.getUserid());
         prepareStatement.executeUpdate();
-        System.out.println("Update with password done.. ");
+         if ((int) session.getAttribute("userid") == users.getUserid()) {
+          session.setAttribute("name", users.getName());
+          session.setAttribute("email", users.getEmail());
+          // System.out.println("Session name" + session.getAttribute("name"));
+          // System.out.println("Update with password done...");
+          
+        }
         status = true;
       }
       connection.close();

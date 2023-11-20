@@ -46,14 +46,14 @@
                             </div>
                             <div class="input-div">
                                 <span>IC Number</span>
-                                <input name="ic" type="text" class="register" th:value="${users.ic}" required>
+                                <input name="ic" type="text" pattern="[0-9]{12}" title="Number only allowed and 12 length required. ex: 001228140849" class="register" th:value="${users.ic}" required>
                                
                             </div>
                         </div>
                         <div class="input-text">
                             <div class="input-div">
                                 <span>Email</span>
-                                <input name="email" type="text" class="register" th:value="${users.email}" required>
+                                <input name="email" type="email" pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}" style="text-transform: lowercase"   title="Please enter email correctly" class="register" th:value="${users.email}" required>
                                 
                             </div>
                             <div class="input-div">
