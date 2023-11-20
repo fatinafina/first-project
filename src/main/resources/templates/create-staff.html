@@ -74,6 +74,8 @@
                       required
                       minlength="12"
                       maxlength="12"
+                      pattern="[0-9]{12}"
+                      title="Number only allowed and 12 length required. ex: 001228140849"
                     />
                   </div>
                 </div>
@@ -82,9 +84,12 @@
                     <span>Email</span>
                     <input
                       name="email"
-                      type="text"
+                      type="email"
                       class="register"
                       placeholder="email"
+                      pattern="[a-zA-Z0-9._%+-]+@[a-z0-9.-]+\.[a-zA-Z]{2,4}"
+                      style="text-transform: lowercase"
+                      title="Please enter email correctly"
                       required
                     />
                   </div>
